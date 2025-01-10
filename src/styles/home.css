@@ -58,6 +58,19 @@
   opacity: 50% !important;
 }
 
+.two{
+  position: absolute;
+
+  bottom: 0;
+  top: 78%;
+  rotate: 90deg;
+  width: 20%;
+  height: 20%;
+  opacity: 0;
+  animation: quickFadeIn 0.5s forwards;
+  right: 83.5%;
+}
+
 .up-gradient {
   background-image: url("../assets/Vector.png");
   background-size: contain;
@@ -65,9 +78,9 @@
   background-repeat: no-repeat;
   position: absolute;
   top: 0;
-  left: 10%;
+  left: 0%;
   width: 50%;
-  height: 40%;
+  height: 38%;
   z-index: 2;
   opacity: 50%;
   animation-delay: 0.2s;

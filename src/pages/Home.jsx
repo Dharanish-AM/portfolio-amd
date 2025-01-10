@@ -6,15 +6,14 @@ export default function Home() {
     <div className="home-container">
       <div className="up-gradient"></div>
       <Navbar />
-  
-     
-      <div className="home-content">
-    
 
+      <div className="home-content">
         <div className="radial-gradient"></div>
         <div className="curl"></div>
+        <div className="curl two"></div>
+
         <div className="left-container">
-        <div className="css-blurry-gradient-1"></div>
+          <div className="css-blurry-gradient-1"></div>
           <div className="v-line-container">
             <div className="line-circle"></div>
             <div className="line"></div>
@@ -43,7 +42,7 @@ export default function Home() {
           </div>
         </div>
         <div className="right-container">
-        <div className="css-blurry-gradient-2"></div>
+          <div className="css-blurry-gradient-2"></div>
           <div className="image-container">
             <div className="circle"></div>
             <div className="profile"></div>
