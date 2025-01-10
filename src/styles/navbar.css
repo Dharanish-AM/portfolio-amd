@@ -24,7 +24,7 @@
   font-family: Poppins;
   color: #eeee;
   font-size: 3vh;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   position: relative;
   padding: 5px 0;
@@ -40,7 +40,7 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: #441752;
+  background-color: #9c28c0;
   transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
@@ -89,7 +89,7 @@
 .title-top {
   font-family: Poppins;
   color: #eeee;
-  font-size: 5vh;
+  font-size: 5vh; 
   font-weight: 1000;
   text-align: center;
 }

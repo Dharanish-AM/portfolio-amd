@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 html,
-body {
+body {   
   margin: 0;
   padding: 0;
   height: 100%;
@@ -21,5 +21,6 @@ body {
   height: 100%;
   width: 100%;
   background-color: #0a071a;
+  cursor: url("./assets/arrow-cursor-outline.svg"),auto;
 }
 

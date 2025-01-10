@@ -52,8 +52,8 @@
   width: 30%;
   height: 30%;
   top: 15%;
-  right: 20%;
-  z-index: 1;
+  right: 22%;
+  z-index: 2;
   animation-delay: 0.6s;
   opacity: 50% !important;
 }
@@ -68,7 +68,7 @@
   left: 10%;
   width: 50%;
   height: 40%;
-  z-index: 1;
+  z-index: 2;
   opacity: 50%;
   animation-delay: 0.2s;
   animation-name: upGradientMove, quickFadeIn;
@@ -84,11 +84,47 @@
   bottom: 0;
   height: 81%;
   right: 0;
-  z-index: 1;
+  z-index: 2;
   top: 65%;
   opacity: 50%;
   animation-delay: 0.4s;
   animation-name: downGradientMove, quickFadeIn;
+}
+
+.css-blurry-gradient-1 {
+  position: fixed;
+  top: 18%;
+  left: 15%;
+  transform: translate(-50%, 0%);
+  width: 50%;
+  height: 50%;
+  border-radius: 50% 22% 40% 80%;
+  filter: blur(100px);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(100, 86, 133),
+    rgba(76, 0, 255, 0)
+  );
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.css-blurry-gradient-2 {
+  position: fixed;
+  top: 0%;
+  right: 0;
+  transform: translate(-50%, 0%);
+  width: 50%;
+  height: 50%;
+  border-radius: 50% 22% 40% 80%;
+  filter: blur(100px);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(100, 86, 133),
+    rgba(76, 0, 255, 0)
+  );
+  opacity: 0.25;
+  z-index: 1;
 }
 
 @keyframes quickFadeIn {
@@ -180,19 +216,72 @@
 }
 
 .hi-greeting {
-  font-size: 7vh;
+  font-size: 3rem;
   font-weight: 700;
 }
 
 .name-greeting {
-  font-size: 7vh;
+  font-size: 3rem;
   font-weight: 700;
+  display: flex;
+  width: fit-content;
 }
+
+.name {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 5s steps(30) 1.5s 1 normal both,
+    blink 0.75s step-end infinite;
+  border-right: 3px solid wheat;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: #cbf21e;
+  }
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes hide-border {
+  100% {
+    border-right: none;
+  }
+}
+
+.name.typing-effect {
+  animation: typing 5s steps(30) 1.5s 1 normal both,
+    blink 0.75s step-end infinite, hide-border 0s 5s forwards;
+}
+
+/* .dot-pattern {
+  background-image: url("../assets/dotpattern.png");
+  background-size: contain;
+  width: 15%;
+  height: 15%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 2.5%;
+  bottom: 4%;
+} */
 
 .short-info {
   font-size: 3vh;
   font-weight: 200;
-  width: 80%;
+  width: 70%;
 }
 
 .name {
@@ -239,7 +328,9 @@
   height: min(100%, 30vw);
   aspect-ratio: 1;
   border-radius: 2000px;
-  opacity: 20%;
+  opacity: 10%;
+  border: 3px #ffffff solid;
+  z-index: 2;
 }
 
 .profile {
@@ -249,26 +340,48 @@
   height: 120%;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 1;
   position: absolute;
+  z-index: 2;
 }
 
 .social-container {
   display: flex;
   flex-direction: row;
   height: 20%;
-  width: 35%;
   align-items: center;
-  justify-content: space-between;
   margin-top: 5%;
+  gap: 5%;
 }
 
 .icons {
   aspect-ratio: 1;
-  height: min(40%, 50vh);
+  height:40%;
   cursor: pointer;
   display: inline-block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-cv {
+  background-color: #694ac554;
+  padding: 1%;
+  font-weight: 500;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #9b8dd8;
+  height: 45%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  font-size: 1em;
+  min-width: 150px;
+}
+
+.download-cv:hover {
+  box-shadow: 0 0 10px 3px rgba(105, 74, 197, 0.6);
+  background-color: #694ac580;
 }
 
 .icons:hover {
@@ -310,6 +423,16 @@
   bottom: 0;
   transform: translate(-50%, -50%);
   z-index: 9999;
+  animation: fade-in 3s ease-in;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .mouse {
