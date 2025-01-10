@@ -1,0 +1,13 @@
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #0a071a;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
