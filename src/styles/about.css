@@ -2,12 +2,108 @@
   position: relative;
   height: 100vh;
   z-index: 1;
+  width: 100vw;
+}
+.title {
   width: 100%;
+  height: 25%;
+  padding-left: 2vw;
+ justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 .title-one {
   font-size: 1.5vw;
-  font-weight: 150;
+  font-weight: 200;
 }
-.title-two{
-    
+.title-two {
+  font-size: 3vw;
+  font-weight: 1000;
+}
+
+.about-content {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  height: 75%;
+}
+.left-container-about {
+  display: flex;
+  align-items: center;
+padding-top: 3vh;
+  height: 100%;
+  width: 35%;
+  flex-direction: column;
+  position: relative;
+}
+
+
+.radial-about{
+  position: absolute;
+  top: 20%;
+  left:40%;
+  transform: translate(-50%, 0%);
+  width: 50%;
+  height: 50%;
+  border-radius: 50% 22% 40% 80%;
+  filter: blur(100px);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(100, 86, 133),
+    rgba(76, 0, 255, 0)
+  );
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.about-image-container {
+  width: 80%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(204, 204, 204, 0.463), rgba(204, 204, 204, 0.162));
+  border-radius: 50% 50% 0 0;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 3;
+}
+
+.about-image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/asfalt-dark.png");
+  background-repeat: repeat;
+  pointer-events: none;
+  opacity: 0.1;
+  z-index: 4;
+}
+
+
+.about-image {
+  background-image: url("../assets/IMG_5172-removebg.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  aspect-ratio: 1;
+  height: 40vh;
+  z-index: 5;
+  position: absolute;
+  top:16.8vh;
+}
+
+
+.right-container-about {
+  display: flex;
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
 }
