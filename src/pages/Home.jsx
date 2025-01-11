@@ -11,26 +11,27 @@ export default function Home() {
         <div className="radial-gradient"></div>
         <div className="curl"></div>
         <div className="curl two"></div>
-
         <div className="left-container">
           <div className="css-blurry-gradient-1"></div>
           <div className="v-line-container">
             <div className="line-circle"></div>
             <div className="line"></div>
           </div>
-          <div className="name-info-container">
-            <div className="greeting-name">
-              <div className="hi-greeting">Hi,</div>
-              <div className="name-greeting">
-                <span>I’m&nbsp;</span>
-                <span className="name typing-effect">Dharanish A M👋</span>
+          <div className="details">
+            <div className="name-info-container">
+              <div className="greeting-name">
+                <div className="hi-greeting">Hi,</div>
+                <div className="name-greeting">
+                  <span>I’m&nbsp;</span>
+                  <span className="name typing-effect">Dharanish A M👋🏻</span>
+                </div>
               </div>
-            </div>
 
-            <div className="short-info">
-              I’m a full-stack developer dedicated to crafting efficient,
-              scalable solutions that drive innovation and deliver tangible
-              impact.
+              <div className="short-info">
+                I’m a full-stack developer dedicated to crafting efficient,
+                scalable solutions that drive innovation and deliver tangible
+                impact.
+              </div>
             </div>
             <div className="social-container">
               <div className="icons github"></div>

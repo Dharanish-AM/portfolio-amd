@@ -1,0 +1,13 @@
+.about-container {
+  position: relative;
+  height: 100vh;
+  z-index: 1;
+  width: 100%;
+}
+.title-one {
+  font-size: 1.5vw;
+  font-weight: 150;
+}
+.title-two{
+    
+}

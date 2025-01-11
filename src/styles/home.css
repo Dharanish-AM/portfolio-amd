@@ -1,8 +1,8 @@
 .home-container {
-  display: flex;
+  width: 100vw;
   flex-direction: column;
-  flex: 1;
-  position: relative;
+  height: 100vh;
+  display: flex;
 }
 
 .home-content {
@@ -12,10 +12,10 @@
   flex: 1;
   width: 100%;
   z-index: 2;
-  position: relative;
   opacity: 0;
   animation: contentSlide 1s forwards;
   animation-delay: 0.8s;
+  height: 98%;
 }
 
 @keyframes contentSlide {
@@ -58,17 +58,17 @@
   opacity: 50% !important;
 }
 
-.two{
+.two {
   position: absolute;
-
   bottom: 0;
-  top: 78%;
+  top: 80%;
   rotate: 90deg;
   width: 20%;
   height: 20%;
   opacity: 0;
   animation: quickFadeIn 0.5s forwards;
-  right: 83.5%;
+  right: 83%;
+  z-index: 1;
 }
 
 .up-gradient {
@@ -78,14 +78,53 @@
   background-repeat: no-repeat;
   position: absolute;
   top: 0;
-  left: 0%;
-  width: 50%;
-  height: 38%;
+  left: 0;
+  width: 50vw;
+  height: 40vh;
   z-index: 2;
-  opacity: 50%;
+  opacity: 0.5;
   animation-delay: 0.2s;
   animation-name: upGradientMove, quickFadeIn;
+  transition: all 0.5s ease; 
 }
+
+@media (max-width: 1200px) {
+  .up-gradient {
+    width: 50%;
+    height: 22vw;
+    left: 0;
+    background-size: contain;
+
+  }
+}
+
+@media (max-width: 853px) {
+  .up-gradient {
+    width: 40vw;
+    height: 30vh;
+    left: 0%;
+    background-size: contain;
+  }
+}
+
+@media (max-width: 730px) {
+  .up-gradient {
+    width: 40vw;
+    height: 25vh;
+    left: 0%;
+    background-size: contain;
+  }
+}
+
+@media (max-width:542px){
+  .up-gradient {
+    width: 35vw;
+    height: 15vh;
+    left: 0%;
+    background-size: contain;
+  }
+}
+
 
 .down-gradient {
   background-image: url("../assets/vector2.png");
@@ -98,11 +137,13 @@
   height: 81%;
   right: 0;
   z-index: 2;
-  top: 65%;
-  opacity: 50%;
+  top: 30vh;
+  opacity: 0.5;
   animation-delay: 0.4s;
   animation-name: downGradientMove, quickFadeIn;
+  transition: all 0.5s ease; 
 }
+
 
 .css-blurry-gradient-1 {
   position: fixed;
@@ -176,12 +217,13 @@
 }
 
 .v-line-container {
-  height: 50%;
+  height: 40%;
   width: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 2%;
+  margin-bottom: 8%;
 }
 
 .line-circle {
@@ -206,10 +248,15 @@
   display: flex;
   width: 65%;
   height: 100%;
-  padding-top: 10%;
+  align-items: center;
   padding-left: 5%;
   opacity: 0;
   animation: leftContainerSlide 1s forwards 1.2s;
+}
+
+.left-container .details {
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes leftContainerSlide {
@@ -229,15 +276,14 @@
 }
 
 .hi-greeting {
-  font-size: 3rem;
+  font-size: 3vw;
   font-weight: 700;
 }
 
 .name-greeting {
-  font-size: 3rem;
+  font-size: 3vw;
   font-weight: 700;
   display: flex;
-  width: fit-content;
 }
 
 .name {
@@ -292,9 +338,9 @@
 } */
 
 .short-info {
-  font-size: 3vh;
+  font-size: 1.5vw;
   font-weight: 200;
-  width: 70%;
+  width: 80%;
 }
 
 .name {
@@ -338,7 +384,7 @@
   align-items: center;
   justify-content: center;
   background-color: #7358c5;
-  height: min(100%, 30vw);
+  width: 50vh;
   aspect-ratio: 1;
   border-radius: 2000px;
   opacity: 10%;
@@ -349,26 +395,39 @@
 .profile {
   background-image: url("../assets/IMG_5174-ai-brush-removebg-wl7fyteb.png");
   background-size: contain;
-  width: 120%;
-  height: 120%;
+  width: 28vw;
+  height: 28vw;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
   z-index: 2;
+  animation: popAndReturn 1s ease-in-out 2s;
+}
+
+@keyframes popAndReturn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .social-container {
   display: flex;
   flex-direction: row;
-  height: 20%;
   align-items: center;
-  margin-top: 5%;
-  gap: 5%;
+  gap: 3vw;
+  width: fit-content;
+  margin-top: 5vh;
 }
 
 .icons {
   aspect-ratio: 1;
-  height:40%;
+  height: 2.5vw;
   cursor: pointer;
   display: inline-block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -376,20 +435,20 @@
 
 .download-cv {
   background-color: #694ac554;
-  padding: 1%;
   font-weight: 500;
-  border-radius: 15px;
+  border-radius: 2vh;
   cursor: pointer;
   color: #9b8dd8;
-  height: 45%;
-  width: 10%;
+  height: 6vh;
+  width: 8vw;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
-  font-size: 1em;
-  min-width: 150px;
+  font-size: 1vw;
+  padding: 0.5vw;
+  max-height: 7vh;
 }
 
 .download-cv:hover {
@@ -433,7 +492,7 @@
 .middle {
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: 2%;
   transform: translate(-50%, -50%);
   z-index: 9999;
   animation: fade-in 3s ease-in;

@@ -23,7 +23,7 @@
 .nav-link {
   font-family: Poppins;
   color: #eeee;
-  font-size: 3vh;
+  font-size: 1.4vw;
   font-weight: 700;
   text-decoration: none;
   position: relative;
@@ -61,7 +61,7 @@
   text-decoration: none;
   color: black;
   font-weight: 700;
-  font-size: 1.35em;
+  font-size: 1.4vw;
 }
 
 .contact-box a::after {
@@ -72,8 +72,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 8%;
-  height: 50%;
+  width: 7.5vw;
+  height: 6vh;
   min-width: 100px;
   background-color: #cbf21e;
   color: black;
@@ -89,7 +89,7 @@
 .title-top {
   font-family: Poppins;
   color: #eeee;
-  font-size: 5vh; 
+  font-size: 2vw; 
   font-weight: 1000;
   text-align: center;
 }
