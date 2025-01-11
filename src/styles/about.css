@@ -4,18 +4,21 @@
   z-index: 1;
   width: 100vw;
 }
+
 .title {
-  width: 100%;
-  height: 25%;
   padding-left: 2vw;
- justify-content: center;
+  justify-content: center;
   display: flex;
   flex-direction: column;
+  padding-top: 4vh;
+  width: fit-content;
 }
+
 .title-one {
   font-size: 1.5vw;
   font-weight: 200;
 }
+
 .title-two {
   font-size: 3vw;
   font-weight: 1000;
@@ -25,24 +28,24 @@
   display: flex;
   width: 100%;
   flex-direction: row;
-  height: 75%;
+  height: 80%;
 }
+
 .left-container-about {
   display: flex;
   align-items: center;
-padding-top: 3vh;
+  padding-top: 12vh;
   height: 100%;
   width: 35%;
   flex-direction: column;
   position: relative;
 }
 
-
-.radial-about{
+.radial-about {
   position: absolute;
-  top: 20%;
-  left:40%;
-  transform: translate(-50%, 0%);
+  top: 18vh;
+  left: 15vw;
+  transform: translate(-50%, 20px);
   width: 50%;
   height: 50%;
   border-radius: 50% 22% 40% 80%;
@@ -52,22 +55,54 @@ padding-top: 3vh;
     rgb(100, 86, 133),
     rgba(76, 0, 255, 0)
   );
-  opacity: 0.8;
+  opacity: 0;
+  transition: opacity 2s ease 0.2s, transform 2s ease 0.2s;
   z-index: 1;
 }
 
+.dot-pattern {
+  background-image: url("../assets/dotpattern.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 15vw;
+  height: 15vh;
+  background-position: center;
+  position: absolute;
+  z-index: 2;
+  top: 82vh;
+  left: 2vw;
+  opacity: 0.7;
+}
+
+.radial-about.in-view {
+  opacity: 0.8;
+  transform: translate(-50%, 0);
+}
+
 .about-image-container {
-  width: 80%;
-  height: 70%;
-  background: radial-gradient(circle, rgba(204, 204, 204, 0.463), rgba(204, 204, 204, 0.162));
+  width: 25vw;
+  height: 20vw;
+  background: radial-gradient(
+    circle,
+    rgba(204, 204, 255, 0.499),
+    rgba(204, 204, 255, 0.2)
+  );
   border-radius: 50% 50% 0 0;
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
-  position: relative;
   z-index: 3;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 2s ease 0.2s, transform 2s ease 0.2s;
+  position: relative;
+}
+
+.about-image-container.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-image-container::before {
@@ -75,15 +110,12 @@ padding-top: 3vh;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   background: url("../assets/asfalt-dark.png");
   background-repeat: repeat;
   pointer-events: none;
   opacity: 0.1;
-  z-index: 4;
+  z-index: 1;
 }
-
 
 .about-image {
   background-image: url("../assets/IMG_5172-removebg.png");
@@ -91,19 +123,174 @@ padding-top: 3vh;
   background-size: contain;
   background-repeat: no-repeat;
   aspect-ratio: 1;
-  height: 40vh;
+  width: 22vw;
   z-index: 5;
   position: absolute;
-  top:16.8vh;
+  top: 10vh;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 2s ease 0.2s, transform 2s ease 0.2s;
 }
 
+.about-image.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .right-container-about {
   display: flex;
   width: 70%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row-1 {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  width: 90%;
+  gap: 3%;
+}
+
+.row-2 {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  width: 90%;
+}
+
+.card-1,
+.card-2 {
+  display: flex;
+  width: 50%;
+  height: 90%;
+  background: radial-gradient(
+    circle at top left,
+    rgba(73, 36, 118, 0.2),
+    rgba(50, 49, 71, 0.25)
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(105, 104, 112, 0.18);
+  opacity: 0;
+  animation: none;
+  z-index: 5;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.card-2{
+  width: 100%;
+}
+
+.card-1:hover,
+.card-2:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.card-1.in-view,
+.card-2.in-view {
+  opacity: 1;
+}
+
+@keyframes appearFromRight {
+  0% {
+    transform: translateX(150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.card-1.in-view .card-content,
+.card-2.in-view .card-content {
+  animation: contentVisibility 0.7s ease-out 0.7s forwards;
+}
+
+.card-1.card-1.in-view .card-title,
+.card-2.card-2.in-view .card-title {
+  animation: contentVisibility 0.7s ease-out 0.7s forwards;
+}
+
+@keyframes contentVisibility {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card-title {
+  font-size: 1.1vw;
+  font-weight: 500;
+  color: #e9e9e9;
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5vh;
+  opacity: 0;
+}
+
+.education-icon {
+  background-image: url("../assets/cap.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  aspect-ratio: 1;
+  width: 1.4vw;
+}
+
+.experience-icon {
+  background-image: url("../assets/achieve.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  aspect-ratio: 1;
+  width: 1.4vw;
+}
+
+.achievements-icon {
+  background-image: url("../assets/badge.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  aspect-ratio: 1;
+  width: 1.4vw;
+}
+
+.card-content {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1vw;
+  opacity: 0;
+}
+
+.card-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-content li {
+  font-size: 0.9vw;
+  padding: 0.5vw 0;
+  font-weight: 250;
+  color: #e9e9e9;
+}
+
+.strong {
+  font-weight: 400;
 }

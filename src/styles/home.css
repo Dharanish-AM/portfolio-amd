@@ -67,7 +67,7 @@
   height: 20%;
   opacity: 0;
   animation: quickFadeIn 0.5s forwards;
- right: 84vw;
+  right: 84vw;
   z-index: 1;
 }
 
@@ -133,7 +133,7 @@
   width: 50%;
   height: 81%;
   right: 0;
-  z-index: 2;
+  z-index: 0;
   top: 25vh;
   opacity: 0.5;
   animation-delay: 0.4s;
@@ -472,7 +472,7 @@
 
 .icons {
   aspect-ratio: 1;
-  height: 2.5vw;
+  width: 2.5vw;
   cursor: pointer;
   display: inline-block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -484,7 +484,6 @@
   border-radius: 2vh;
   cursor: pointer;
   color: #b0abc7;
-  height: 6vh;
   width: 8vw;
   display: flex;
   align-items: center;
@@ -493,7 +492,7 @@
     background-color 0.3s ease;
   font-size: 1vw;
   padding: 0.5vw;
-  max-height: 7vh;
+  max-height: 7vw;
 }
 
 .download-cv:hover {
