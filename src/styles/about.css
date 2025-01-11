@@ -34,7 +34,7 @@
 .left-container-about {
   display: flex;
   align-items: center;
-  padding-top: 12vh;
+  padding-top: 5vw;
   height: 100%;
   width: 35%;
   flex-direction: column;
@@ -43,11 +43,11 @@
 
 .radial-about {
   position: absolute;
-  top: 18vh;
+  top: 8vw;
   left: 15vw;
   transform: translate(-50%, 20px);
-  width: 50%;
-  height: 50%;
+  width: 20vw;
+ aspect-ratio: 1;
   border-radius: 50% 22% 40% 80%;
   filter: blur(100px);
   background: radial-gradient(
@@ -55,7 +55,6 @@
     rgb(100, 86, 133),
     rgba(76, 0, 255, 0)
   );
-  opacity: 0;
   transition: opacity 2s ease 0.2s, transform 2s ease 0.2s;
   z-index: 1;
 }
@@ -126,7 +125,7 @@
   width: 22vw;
   z-index: 5;
   position: absolute;
-  top: 10vh;
+  top: 4.1vw;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 2s ease 0.2s, transform 2s ease 0.2s;
@@ -143,12 +142,12 @@
   height: 100%;
   flex-direction: column;
   align-items: center;
+  gap: 2vw;
 }
 
 .row-1 {
   display: flex;
   flex-direction: row;
-  height: 50%;
   width: 90%;
   gap: 3%;
 }
@@ -156,7 +155,6 @@
 .row-2 {
   display: flex;
   flex-direction: row;
-  height: 50%;
   width: 90%;
 }
 
@@ -164,7 +162,7 @@
 .card-2 {
   display: flex;
   width: 50%;
-  height: 90%;
+  height: 17vw;
   background: radial-gradient(
     circle at top left,
     rgba(73, 36, 118, 0.2),

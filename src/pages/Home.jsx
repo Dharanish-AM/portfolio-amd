@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import "../styles/home.css";
+import { FaGithub, FaLinkedinIn, FaBehance, FaEnvelope } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -34,11 +35,19 @@ export default function Home() {
               </div>
             </div>
             <div className="social-container">
-              <div className="icons github"></div>
-              <div className="icons linkedin"></div>
-              <div className="icons behance"></div>
-              <div className="icons mail"></div>
-              <but className="download-cv">Download CV</but>
+              <div className="icons">
+                <FaGithub size={"2.2vw"} color="#a6a6a6" />
+              </div>
+              <div className="icons">
+                <FaLinkedinIn size={"2.2vw"} color="#a6a6a6" />
+              </div>
+              <div className="icons">
+                <FaBehance size={"2.2vw"} color="#a6a6a6" />
+              </div>
+              <div className="icons">
+                <FaEnvelope size={"2.2vw"} color="#a6a6a6" />
+              </div>
+              <button className="download-cv">Download CV</button>
             </div>
           </div>
         </div>

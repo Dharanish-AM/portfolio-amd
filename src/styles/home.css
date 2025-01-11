@@ -49,10 +49,10 @@
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
-  width: 30%;
-  height: 30%;
-  top: 5vw;
-  right: 20vw;
+  width: 12vw;
+aspect-ratio: 1;
+  top: 7vw;
+  right: 30vw;
   z-index: 2;
   animation-delay: 0.6s;
   opacity: 50% !important;
@@ -214,7 +214,7 @@
 }
 
 .v-line-container {
-  height: 40%;
+  height: min(35vh,15vw);
   width: 3%;
   display: flex;
   flex-direction: column;
@@ -245,8 +245,8 @@
   display: flex;
   width: 65%;
   height: 100%;
-  align-items: center;
   padding-left: 5%;
+  padding-top: 22vh;
   opacity: 0;
   animation: leftContainerSlide 1s forwards 1.2s;
 }
@@ -254,6 +254,8 @@
 .left-container .details {
   display: flex;
   flex-direction: column;
+  height: 50%;
+  width: 100%;
 }
 
 @keyframes leftContainerSlide {
@@ -321,18 +323,6 @@
   animation: typing 5s steps(30) 2s 1 normal both, blink 0.75s step-end infinite,
     hide-border 0s 5s forwards;
 }
-
-/* .dot-pattern {
-  background-image: url("../assets/dotpattern.png");
-  background-size: contain;
-  width: 15%;
-  height: 15%;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  left: 2.5%;
-  bottom: 4%;
-} */
 
 .short-info {
   font-size: 1.5vw;
@@ -464,18 +454,47 @@
 .social-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 3vw;
-  width: fit-content;
   margin-top: 5vh;
+  justify-content: center;
+  width: fit-content;
 }
 
 .icons {
-  aspect-ratio: 1;
-  width: 2.5vw;
   cursor: pointer;
-  display: inline-block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  .social-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
+    margin-top: 5vh;
+    justify-content: center;
+  }
+
+  .icons {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    flex: 0;
+  }
+
+  .icons:hover {
+    transform: translateY(-12px) scale(1.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0;
+}
+
+.icons:hover {
+  transform: translateY(-12px) scale(1.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .download-cv {
@@ -493,44 +512,12 @@
   font-size: 1vw;
   padding: 0.5vw;
   max-height: 7vw;
+  display: none;
 }
 
 .download-cv:hover {
   box-shadow: 0 0 10px 3px rgba(105, 74, 197, 0.6);
   background-color: #694ac580;
-}
-
-.icons:hover {
-  transform: translateY(-10px) scale(1.1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.github {
-  background-image: url("../assets/github.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.linkedin {
-  background-image: url("../assets/linkedin.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.behance {
-  background-image: url("../assets/behance 1.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.mail {
-  background-image: url("../assets/mail 1.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .middle {
@@ -552,20 +539,20 @@
 }
 
 .mouse {
-  width: 30px;
-  height: 45px;
+  width: 1.5vw;
+  height: 2.5vw;
   border: 2px solid #a6adba;
   border-radius: 60px;
 }
 
 .mouse::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 0.35vw;
+ aspect-ratio: 1;
   position: absolute;
-  top: 30px;
+  top: 30vh;
   background: #a6adba;
-  left: 50%;
+  right: 0.4vw;
   transform: translateX(-50%);
   border-radius: 50%;
   opacity: 1;
@@ -575,10 +562,16 @@
 @keyframes mouse {
   from {
     opacity: 1;
-    top: 10px;
+    top: 1vh;
   }
   to {
     opacity: 0;
-    top: 30px;
+    top: 3vh;
+  }
+}
+
+@media  (max-width: 1000px) {
+  .middle,.mouse{
+    display: none;
   }
 }
