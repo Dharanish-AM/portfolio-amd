@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import "../styles/about.css";
-import { GiGraduateCap } from "react-icons/gi";
 
 export default function About() {
   useEffect(() => {
@@ -9,15 +8,15 @@ export default function About() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("in-view");
-            observer.unobserve(entry.target);
+            observer.unobserve(entry.target); 
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 } 
     );
 
     const elementsToObserve = document.querySelectorAll(
-      ".radial-about, .about-image-container, .about-image, .card-1, .card-2"
+      ".radial-about, .about-image-container, .about-image, .card-1, .card-2, .title"
     );
     elementsToObserve.forEach((el) => observer.observe(el));
 

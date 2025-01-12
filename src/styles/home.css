@@ -1,8 +1,8 @@
 .home-container {
   width: 100vw;
   flex-direction: column;
-  height: 100vh;
   display: flex;
+  height: 100vh;
 }
 
 .home-content {
@@ -15,7 +15,6 @@
   opacity: 0;
   animation: contentSlide 1s forwards;
   animation-delay: 0.8s;
-  height: 98%;
 }
 
 @keyframes contentSlide {
@@ -50,7 +49,7 @@
   background-repeat: no-repeat;
   position: absolute;
   width: 12vw;
-aspect-ratio: 1;
+  aspect-ratio: 1;
   top: 7vw;
   right: 30vw;
   z-index: 2;
@@ -81,7 +80,7 @@ aspect-ratio: 1;
   left: 5vw;
   width: 50vw;
   height: 40vh;
-  z-index: 2;
+  z-index: 5;
   opacity: 0.5;
   animation-delay: 0.2s;
   animation-name: upGradientMove, quickFadeIn;
@@ -130,11 +129,11 @@ aspect-ratio: 1;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
-  width: 50%;
-  height: 81%;
+  width: 50vw;
+  aspect-ratio: 1;
   right: 0;
   z-index: 0;
-  top: 25vh;
+  top: 50vh;
   opacity: 0.5;
   animation-delay: 0.4s;
   animation-name: downGradientMove, quickFadeIn;
@@ -214,7 +213,7 @@ aspect-ratio: 1;
 }
 
 .v-line-container {
-  height: min(35vh,15vw);
+  height: min(35vh, 15vw);
   width: 3%;
   display: flex;
   flex-direction: column;
@@ -548,7 +547,7 @@ aspect-ratio: 1;
 .mouse::before {
   content: "";
   width: 0.35vw;
- aspect-ratio: 1;
+  aspect-ratio: 1;
   position: absolute;
   top: 30vh;
   background: #a6adba;
@@ -570,8 +569,9 @@ aspect-ratio: 1;
   }
 }
 
-@media  (max-width: 1000px) {
-  .middle,.mouse{
+@media (max-width: 1000px) {
+  .middle,
+  .mouse {
     display: none;
   }
 }
