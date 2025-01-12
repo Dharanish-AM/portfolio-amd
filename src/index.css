@@ -21,6 +21,6 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #0a071a;
-  cursor: url("./assets/arrow-cursor-outline.svg"),auto;
+  /* cursor: url("./assets/arrow-cursor-outline.svg"),auto; */
 }
 

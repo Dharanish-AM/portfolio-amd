@@ -16,8 +16,8 @@
   flex-direction: row;
   display: flex;
   justify-content: center;
-  flex: 1;
   align-items: center;
+  margin-top: 2.5%;
 }
 
 .skills-title {
@@ -67,8 +67,8 @@
   );
   border: 1px solid rgba(200, 200, 200, 0.3);
   border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   perspective: 800px;
+  opacity: 0;
 }
 
 .tech-icon-container:hover {
@@ -124,7 +124,6 @@
   padding: 1.5vw;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   height: 12.5vw;
   font-size: 1vw;
   line-height: 1.8vw;
@@ -175,27 +174,6 @@
     transform: translateX(0);
     opacity: 1;
   }
-}
-
-.tech-icon-container,
-.skills-point {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.tech-icon-container.in-view,
-.skills-point.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.tech-icon-container.in-view {
-  transform: scale(1);
-}
-
-.skills-point.in-view {
-  transition-delay: 0.2s;
 }
 
 .skills-title {

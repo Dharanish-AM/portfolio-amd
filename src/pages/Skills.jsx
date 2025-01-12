@@ -18,18 +18,17 @@ export default function Skills() {
       ".tech-icon-container, .skills-point, .skills-title, .skills-text"
     );
 
-    const handleVisibility = (entries) => {
+    const handleVisibility = (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("in-view");
-        } else {
-          entry.target.classList.remove("in-view");
+          observer.unobserve(entry.target);
         }
       });
     };
 
     const observer = new IntersectionObserver(handleVisibility, {
-      threshold: 0.3,
+      threshold: 0.5,
     });
 
     observedElements.forEach((element) => observer.observe(element));
