@@ -6,30 +6,30 @@ export default function Projects() {
     {
       title: "TownTrolley",
       description:
-        "TownTrolley is a web application that allows users to book and manage their town's public transportation.",
-      tech: ["#React", "#Express", "#Node", "#MongoDB"],
-      github: "https://github.com/user/TownTrolley",
+        "A dynamic platform that directly connects farmers with customers to conveniently purchase locally produced goods, empowering local agriculture.",
+      tech: ["#React", "#Express", "#Node", "#MongoDB", "#Leaflet"],
+      github: "https://github.com/JeyaprakashRajesh/TownTrolley",
     },
     {
       title: "Earthing Healthiness Monitor",
       description:
-        "This project monitors earthing health using smart sensors and displays real-time stats on a user-friendly dashboard.",
-      tech: ["#React", "#Express", "#Node", "#MongoDB"],
-      github: "https://github.com/user/EarthingMonitor",
+        "A system that detects earth leakage currents using sensors and LoRa technology, providing real-time monitoring on a dashboard.",
+      tech: ["#React", "#Express", "#Node", "#MongoDB", "#LoRa", "#Sensors"],
+      github: "https://github.com/Dharanish-AM/Earthing-Healthiness-Monitor",
     },
     {
       title: "BioKey",
       description:
-        "BioKey is a cloud-based storage app secured with fingerprint authentication for sensitive data.",
-      tech: ["#React", "#Node", "#MongoDB", "#Wi-Fi Direct"],
-      github: "https://github.com/user/BioKey",
+        "A cloud-based mobile media storage platform featuring fingerprint authentication and a password vault for enhanced security.",
+      tech: ["#React Native", "#Node", "#NodeMCU", "#Fingerprint", "#MongoDB"],
+      github: "https://github.com/Dharanish-AM/BioKey",
     },
     {
       title: "Eatzly",
       description:
-        "Eatzly is a platform that connects food enthusiasts with local restaurants for a seamless dining experience.",
-      tech: ["#React", "#Express", "#Node", "#MongoDB"],
-      github: "https://github.com/user/Eatzly",
+        "A mobile food ordering platform that enables QR code-based ordering, seamless menu browsing, and quick, hassle-free payments.",
+      tech: ["#React", "#Express", "#Node", "#MongoDB", "#QR Codes"],
+      github: "https://github.com/JeyaprakashRajesh/Eatzly",
     },
   ]);
 
