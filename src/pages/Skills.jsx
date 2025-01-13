@@ -28,7 +28,7 @@ export default function Skills() {
     };
 
     const observer = new IntersectionObserver(handleVisibility, {
-      threshold: 0.5,
+      threshold: 0.3,
     });
 
     observedElements.forEach((element) => observer.observe(element));

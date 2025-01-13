@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../styles/projects.css";
 
 export default function Projects() {
@@ -33,15 +33,43 @@ export default function Projects() {
     },
   ]);
 
+  const projectRefs = useRef([]);
+  const titleRef = useRef(null);
+  const content1Ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (titleRef.current) observer.observe(titleRef.current);
+    if (content1Ref.current) observer.observe(content1Ref.current);
+
+    projectRefs.current.forEach((project) => {
+      observer.observe(project);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="projects-container">
       <div className="tag-icon"></div>
-      <div className="projects-title">
+      <div className="projects-title" ref={titleRef}>
         <div className="projects-title-1">MY WORKS</div>
         <div className="projects-title-2">Projects.</div>
       </div>
       <div className="projects-content">
-        <div className="projects-content-1">
+        <div className="projects-content-1" ref={content1Ref}>
           The following projects showcase my skills and experience through
           real-world examples of my work. Each project is briefly described with
           links to code repositories and live demos. They reflect my ability to
@@ -50,7 +78,12 @@ export default function Projects() {
         </div>
         <div className="projects-content-2">
           {projects.map((project, index) => (
-            <div key={index} className="project-card">
+            <div
+              key={index}
+              ref={(el) => (projectRefs.current[index] = el)}
+              className="project-card"
+              style={{ "--animation-delay": `${index * 0.2}s` }} 
+            >
               <a
                 href={project.github}
                 target="_blank"
