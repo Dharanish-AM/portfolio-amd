@@ -4,7 +4,7 @@
   background-color: #0a071a;
   position: relative;
   width: 100vw;
-  
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {

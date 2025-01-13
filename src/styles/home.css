@@ -2,7 +2,6 @@
   width: 100vw;
   flex-direction: column;
   display: flex;
-  height: 100vh;
 }
 
 .home-content {
@@ -15,6 +14,7 @@
   opacity: 0;
   animation: contentSlide 1s forwards;
   animation-delay: 0.8s;
+  align-items: center;
 }
 
 @keyframes contentSlide {
@@ -213,7 +213,7 @@
 }
 
 .v-line-container {
-  height: min(35vh, 15vw);
+  height: 17vw;
   width: 3%;
   display: flex;
   flex-direction: column;
@@ -245,9 +245,10 @@
   width: 65%;
   height: 100%;
   padding-left: 5%;
-  padding-top: 22vh;
+  padding-top: 10vw;
   opacity: 0;
   animation: leftContainerSlide 1s forwards 1.2s;
+  align-items: center;
 }
 
 .left-container .details {
@@ -454,7 +455,7 @@
   display: flex;
   flex-direction: row;
   gap: 3vw;
-  margin-top: 5vh;
+  margin-top: 3vw;
   justify-content: center;
   width: fit-content;
 }
