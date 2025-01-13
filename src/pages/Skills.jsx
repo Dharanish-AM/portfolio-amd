@@ -40,6 +40,8 @@ export default function Skills() {
 
   return (
     <div className="skills-container">
+    <div className="up-grid"></div>
+    <div className="down-grid"></div>
       <div className="skills-title">
         <div className="title-text-1">EXPERTISE</div>
         <div className="title-text-2">SKILLS.</div>

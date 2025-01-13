@@ -1,12 +1,11 @@
 .navbar-container {
-  width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1vw;
   z-index: 2;
+padding: 1vw;
 }
 
 .navbar-links-container {
