@@ -1,0 +1,74 @@
+.contact-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  position: relative;
+}
+
+.pattern-contact {
+  background-image: url("../assets/pattern-contact.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 8vw;
+  aspect-ratio: 1;
+  top: 35vw;
+  position: absolute;
+  left: 2vw;
+}
+
+.contact-left {
+  width: 40%;
+  padding: 2vw;
+}
+
+.contact-main-title {
+  font-size: 3vw;
+  font-weight: 1000;
+}
+.contact-subtitle {
+  font-size: 1.2vw;
+  font-weight: 300;
+  color: #d7d5e3;
+}
+.contact-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  margin-top: 5vw;
+}
+.phone-icon {
+  background-image: url("../assets/contact-phone.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.5vw;
+  aspect-ratio: 1;
+}
+.contact-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+  align-items: center;
+}
+.mail-icon {
+  background-image: url("../assets/contact-mail.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.5vw;
+  aspect-ratio: 1;
+}
+.location-icon {
+  background-image: url("../assets/contact-location.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.5vw;
+  aspect-ratio: 1;
+}
+.contact-text {
+  font-size: 1.1vw;
+  font-weight: 200;
+}
+.contact-right {
+  width: 60%;
+  padding: 2vw;
+}
