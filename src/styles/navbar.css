@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   z-index: 2;
-padding: 1vw;
+  padding: 1vw;
 }
 
 .navbar-links-container {
@@ -37,7 +37,7 @@ padding: 1vw;
   bottom: 0;
   left: 0;
   width: 0%;
-  height: 2px;
+  height: 0.1vw;
   background-color: #9c28c0;
   transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
@@ -49,10 +49,12 @@ padding: 1vw;
 .nav-link.active::after {
   width: 100%;
   background-color: #cbf21e;
+  height: 0.1vw;
 }
 
 .nav-link.active:hover::after {
   background-color: #cbf21e;
+  height: 0.1vw;
 }
 
 .contact-box a {

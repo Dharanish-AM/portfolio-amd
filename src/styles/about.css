@@ -96,7 +96,7 @@
 
 @keyframes appearFromDown {
   0% {
-    transform: translateY(20vh);
+    transform: translateY(30px);
     opacity: 0;
   }
   100% {

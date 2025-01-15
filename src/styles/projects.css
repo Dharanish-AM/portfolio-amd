@@ -79,7 +79,7 @@
 .project-card {
   background: linear-gradient(135deg, #1c1f38, #0f172a);
   color: #e2e8f0;
-  border-radius: 16px;
+  border-radius: 1vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 1.5vw;
   width: 18%;

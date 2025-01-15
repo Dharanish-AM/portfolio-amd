@@ -97,7 +97,7 @@
     rgba(0, 0, 0, 0.05)
   );
   border: 1px solid rgba(200, 200, 200, 0.3);
-  border-radius: 8px;
+  border-radius: 1vw;
   perspective: 800px;
   opacity: 0;
   backdrop-filter: blur(10px);
@@ -153,7 +153,7 @@
   );
   color: #d7d5e3;
   padding: 1.5vw;
-  border-radius: 15px;
+  border-radius: 1vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   font-size: 1vw;
   line-height: 1.8vw;
