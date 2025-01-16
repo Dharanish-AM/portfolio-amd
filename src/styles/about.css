@@ -278,6 +278,7 @@
 .card-content {
   width: 100%;
   opacity: 0;
+  margin-top: 1vw;
 }
 
 .card-content ul {

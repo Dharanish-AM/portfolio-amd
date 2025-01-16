@@ -6,12 +6,12 @@ export default function Contact() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, observerInstance) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("in-view");
-          } else {
-            entry.target.classList.remove("in-view");
+            
+            observerInstance.unobserve(entry.target);
           }
         });
       },
@@ -25,6 +25,7 @@ export default function Contact() {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
+
 
   return (
     <div className="contact-container" ref={contactRef}>
