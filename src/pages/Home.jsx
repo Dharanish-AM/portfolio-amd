@@ -29,9 +29,7 @@ export default function Home() {
               </div>
 
               <div className="short-info">
-                I’m a full-stack developer dedicated to crafting efficient,
-                scalable solutions that drive innovation and deliver tangible
-                impact.
+                I’m a software engineer and designer dedicated to crafting efficient, user-centric solutions that drive innovation and deliver tangible impact.
               </div>
             </div>
             <div className="social-container">
