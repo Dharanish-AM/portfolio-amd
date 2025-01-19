@@ -3,8 +3,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
+  height: fit-content;
 }
 
 .pattern-contact {
@@ -13,7 +12,7 @@
   background-repeat: no-repeat;
   width: 8vw;
   aspect-ratio: 1;
-  top: 32vw;
+  top: 35vw;
   position: absolute;
   left: 2vw;
 }
@@ -71,11 +70,11 @@
 }
 .contact-right {
   width: 60%;
-  padding: 2vw;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   padding-right: 5vw;
+  padding-top: 5vw;
 }
 
 .contact-form {

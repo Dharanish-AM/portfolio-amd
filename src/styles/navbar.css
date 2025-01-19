@@ -18,6 +18,10 @@
   gap: 3%;
 }
 
+.navbar-links-container a{
+  cursor: pointer;
+}
+
 .nav-link {
   font-family: Poppins;
   color: #eeee;

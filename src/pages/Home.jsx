@@ -1,8 +1,15 @@
 import Navbar from "../components/Navbar";
 import "../styles/home.css";
-import { FaGithub, FaLinkedinIn, FaBehance, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 export default function Home() {
+
+  const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = 'https://docs.google.com/document/d/17laRS8CTAlXNJon7XP5yal49vzY4rIqD/export?format=pdf';
+    link.download = 'CV.pdf';
+    link.click();
+  };
   return (
     <div className="home-container">
       <div className="up-gradient"></div>
@@ -34,19 +41,33 @@ export default function Home() {
             </div>
             <div className="social-container">
               <div className="icons">
-                <FaGithub size={"2.2vw"} color="#a6a6a6" />
+                <a href="https://github.com/Dharanish-AM" target="_blank" rel="noopener noreferrer">
+                  <FaGithub size={"2.2vw"} color="#a6a6a6" />
+                </a>
               </div>
               <div className="icons">
-                <FaLinkedinIn size={"2.2vw"} color="#a6a6a6" />
+                <a href="https://www.linkedin.com/in/dharanish-a-m-40a797295/" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedinIn size={"2.2vw"} color="#a6a6a6" />
+                </a>
               </div>
               <div className="icons">
-                <FaBehance size={"2.2vw"} color="#a6a6a6" />
+                <a href="https://www.instagram.com/dharanish_15_/" target="_blank" rel="noopener noreferrer">
+                  <FaInstagram size={"2.2vw"} color="#a6a6a6" />
+                </a>
               </div>
               <div className="icons">
-                <FaEnvelope size={"2.2vw"} color="#a6a6a6" />
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dharanish816@gmail.com&su=Subject&body=Hello%20Dharanish,%20I%20wanted%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">
+                  <FaEnvelope size={"2.2vw"} color="#a6a6a6" />
+                </a>
               </div>
-              <button className="download-cv">Download CV</button>
+
+
+
+              <button className="download-cv" onClick={downloadCV}>
+                Download CV
+              </button>
             </div>
+
           </div>
         </div>
         <div className="right-container">
@@ -58,9 +79,13 @@ export default function Home() {
         </div>
         {/* <div className="dot-pattern"></div> */}
       </div>
-      <div className="middle">
-        <div className="mouse"></div>
+      <div className="scroll-indicator">
+        <div className="mouse">
+          <div className="mouse-wheel"></div>
+        </div>
+
       </div>
+
       <div className="down-gradient"></div>
     </div>
   );

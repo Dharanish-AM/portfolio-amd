@@ -2,53 +2,64 @@ import { useState, useEffect } from "react";
 import "../styles/navbar.css";
 
 export default function Navbar() {
-  const [activeLink, setActiveLink] = useState("");
+  const [activeLink, setActiveLink] = useState("Home");
+
+  const sections = ["Home", "About", "Skills", "Projects"];
+
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionOffsets = sections.map((section) => {
+        const element = document.getElementById(section.toLowerCase());
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return {
+            section,
+            offset: rect.top,
+          };
+        }
+        return null;
+      });
+
+      
+      const active = sectionOffsets.find(
+        ({ offset }) => offset >= 0 && offset < window.innerHeight / 2
+      );
+
+      if (active) {
+        setActiveLink(active.section);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
+    const section = document.getElementById(linkName.toLowerCase());
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
-
-  useEffect(() => {
-    setActiveLink("Home");
-  }, []);
 
   return (
     <div className="navbar-container">
       <div className="title-top">Portfolio</div>
       <div className="navbar-links-container">
-        <a
-          href="#home"
-          className={`nav-link ${activeLink === "Home" ? "active" : ""}`}
-          onClick={() => handleLinkClick("Home")}
-        >
-          Home
-        </a>
-
-        <a
-          href="#about"
-          className={`nav-link ${activeLink === "About" ? "active" : ""}`}
-          onClick={() => handleLinkClick("About")}
-        >
-          About
-        </a>
-        <a
-          href="#skills"
-          className={`nav-link ${activeLink === "Skills" ? "active" : ""}`}
-          onClick={() => handleLinkClick("Skills")}
-        >
-          Skills
-        </a>
-        <a
-          href="#projects"
-          className={`nav-link ${activeLink === "Projects" ? "active" : ""}`}
-          onClick={() => handleLinkClick("Projects")}
-        >
-          Projects
-        </a>
+        {sections.map((section) => (
+          <a
+            key={section}
+            className={`nav-link ${activeLink === section ? "active" : ""}`}
+            onClick={() => handleLinkClick(section)}
+          >
+            {section}
+          </a>
+        ))}
         <div className="contact-box">
           <a
-            href="#contact"
-            className={`nav-link`}
+            className={`nav-link ${activeLink === "Contact" ? "active" : ""}`}
             onClick={() => handleLinkClick("Contact")}
           >
             Contact

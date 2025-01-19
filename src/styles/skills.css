@@ -1,9 +1,9 @@
 .skills-container {
   display: flex;
   width: 100vw;
-  margin-top: 5vw;
   flex-direction: column;
   position: relative;
+  
 }
 
 .up-grid {
