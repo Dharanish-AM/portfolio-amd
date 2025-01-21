@@ -486,7 +486,7 @@
 
 .middle {
   position: absolute;
-  top: 93vh;
+  top: 50vw;
   left: 50vw;
   transform: translate(-50%, -50%);
   z-index: 9999;
@@ -525,7 +525,7 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 44vw;
+  top: 41vw;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -546,9 +546,9 @@
 
 .mouse-wheel {
   width: 5px;
-  height: 8px;
+aspect-ratio: 1;
   background-color: #a6a6a6;
-  border-radius: 50%;
+  border-radius: 100px;
   animation: scroll 1.5s infinite ease-in-out;
 }
 
