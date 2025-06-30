@@ -10,6 +10,10 @@ import MongoIcon from "../assets/mongodb.png";
 import ReduxIcon from "../assets/redux.png";
 import FigmaIcon from "../assets/figma.png";
 import FlstudioIcon from "../assets/flstudio-1.png";
+import NextjsIcon from "../assets/nextjs2.png";
+import TailwindIcon from "../assets/tailwindcss.png";
+import TypescriptIcon from "../assets/typescript.png";
+import AwsIcon from "../assets/aws.png";
 import { useEffect } from "react";
 
 export default function Skills() {
@@ -49,15 +53,7 @@ export default function Skills() {
       <div className="skills-content">
         <div className="skills-top-container">
           <div className="skills-text">
-            As a skilled web and mobile app developer, I craft seamless user
-            experiences across platforms. With expertise in HTML, CSS,
-            JavaScript, React, and React Native, I bring dynamic web and mobile
-            applications to life. I leverage Node.js and MongoDB to build robust
-            back-end systems that power scalable solutions. My approach is
-            centered on optimizing performance, ensuring responsive designs, and
-            incorporating modern design principles. Constantly evolving with
-            industry trends, I am dedicated to creating intuitive, high-quality
-            apps that meet user needs.
+            As a versatile software engineer, I specialize in end-to-end product development—from intuitive UI/UX design to robust backend architecture. I build scalable and maintainable applications using HTML, CSS, JavaScript, React,React Native, Node.js, and MongoDB. With experience in design tools like Figma and a strong grasp of testing and CI/CD workflows, I ensure quality-driven development and seamless deployments. My holistic approach integrates performance optimization, clean code practices, and user-centric design to deliver impactful digital solutions.
           </div>
           <div className="skills-overview-list">
             <div className="skills-point">
@@ -73,8 +69,7 @@ export default function Skills() {
               app performance and reliability.
             </div>
             <div className="skills-point">
-              Experienced in utilizing version control systems like Git for
-              efficient team collaboration and project management.
+              Proficient in using version control systems like Git and deploying applications to cloud platforms, ensuring efficient collaboration and scalable, reliable delivery.
             </div>
             <div className="skills-point">
               Strong understanding of UI/UX principles to deliver visually
@@ -115,6 +110,18 @@ export default function Skills() {
             <div className="tech-icon-container">
               <img src={FlstudioIcon} alt="FL Studio Icon" />
             </div>
+          <div className="tech-icon-container">
+            <img src={NextjsIcon} alt="Next.js Icon" />
+          </div>
+          <div className="tech-icon-container">
+            <img src={TailwindIcon} alt="Tailwind CSS Icon" />
+          </div>
+          <div className="tech-icon-container">
+            <img src={TypescriptIcon} alt="TypeScript Icon" />
+          </div>
+          <div className="tech-icon-container">
+            <img src={AwsIcon} alt="AWS Icon" />
+          </div>
           </div>
         </div>
       </div>

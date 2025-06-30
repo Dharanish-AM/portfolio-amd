@@ -31,6 +31,34 @@ export default function Projects() {
       tech: ["#React", "#Express", "#Node", "#MongoDB", "#QR Codes"],
       github: "https://github.com/JeyaprakashRajesh/Eatzly",
     },
+    {
+      title: "MILVER",
+      description:
+        "An intelligent milk delivery management system that streamlines driver routes, tracks bottle usage, and ensures efficient doorstep distribution.",
+      tech: ["#React", "#Express", "#Node", "#MongoDB", "#Leaflet"],
+      github: "https://github.com/Dharanish-AM/MILVER",
+    },
+    {
+      title: "AlgoLog",
+      description:
+        "A platform that tracks student coding progress using automated web scraping, enabling tutors to monitor performance and personalize learning support.",
+      tech: ["#React", "#Node", "#TailwindCSS", "#WebScraping", "#MongoDB"],
+      github: "https://github.com/Dharanish-AM/AlgoLog",
+    },
+    {
+      title: "TrackWise",
+      description:
+        "A centralized student activity tracking system for tutors, offering task assignment, submission tracking, coding progress analytics, and real-time dashboard monitoring.",
+      tech: ["#React", "#Node", "#Express", "#MongoDB"],
+      github: "https://github.com/Dharanish-AM/TrackWise",
+    },
+    {
+      title: "NeuroBridge",
+      description:
+        "A personal portfolio website showcasing my skills, projects, and experience as a software engineer.",
+      tech: ["#AI", "#EEG", "#React", "#TailwindCSS", "#Node", "#Express"],
+      github: "",
+    },
   ]);
 
   const projectRefs = useRef([]);
@@ -82,7 +110,6 @@ export default function Projects() {
               key={index}
               ref={(el) => (projectRefs.current[index] = el)}
               className="project-card"
-              style={{ "--animation-delay": `${index * 0.2}s` }} 
             >
               <a
                 href={project.github}
@@ -106,6 +133,9 @@ export default function Projects() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="scroll-indicator">
+          <span className="scroll-indicator-bar" />
         </div>
       </div>
     </div>
