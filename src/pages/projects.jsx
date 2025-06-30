@@ -55,7 +55,7 @@ export default function Projects() {
     {
       title: "NeuroBridge",
       description:
-        "A personal portfolio website showcasing my skills, projects, and experience as a software engineer.",
+        "An AI-powered EEG signal analysis platform designed to detect attention levels and mental states, supporting neurofeedback and cognitive enhancement applications.",
       tech: ["#AI", "#EEG", "#React", "#TailwindCSS", "#Node", "#Express"],
       github: "",
     },
