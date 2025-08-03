@@ -59,6 +59,13 @@ export default function Projects() {
       tech: ["#AI", "#EEG", "#React", "#TailwindCSS", "#Node", "#Express"],
       github: "",
     },
+    {
+      title: "CmdCast",
+      description:
+        "A real-time command broadcasting tool that enables synchronized terminal command execution across multiple connected developer machines.",
+      tech: ["#Node", "#Socket.io", "#React", "#Express", "#WebRTC"],
+      github: "https://github.com/Dharanish-AM/CmdCast",
+    },
   ]);
 
   const projectRefs = useRef([]);
