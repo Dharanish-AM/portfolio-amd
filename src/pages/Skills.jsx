@@ -13,6 +13,7 @@ import FlstudioIcon from "../assets/flstudio-1.png";
 import NextjsIcon from "../assets/nextjs2.png";
 import TailwindIcon from "../assets/tailwindcss.png";
 import TypescriptIcon from "../assets/typescript.png";
+import SpringIcon from "../assets/spring.png";
 import AwsIcon from "../assets/aws.png";
 import { useEffect } from "react";
 
@@ -94,6 +95,9 @@ export default function Skills() {
             </div>
             <div className="tech-icon-container">
               <img src={NodeIcon} alt="Node.js Icon" />
+            </div>
+              <div className="tech-icon-container">
+              <img src={SpringIcon} alt="Spring.js Icon" />
             </div>
             <div className="tech-icon-container">
               <img src={MongoIcon} alt="MongoDB Icon" />
