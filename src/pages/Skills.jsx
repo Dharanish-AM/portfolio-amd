@@ -53,7 +53,7 @@ export default function Skills() {
       <div className="skills-content">
         <div className="skills-top-container">
           <div className="skills-text">
-            As a versatile software engineer, I specialize in end-to-end product development—from intuitive UI/UX design to robust backend architecture. I build scalable and maintainable applications using HTML, CSS, JavaScript, React,React Native, Node.js, and MongoDB. With experience in design tools like Figma and a strong grasp of testing and CI/CD workflows, I ensure quality-driven development and seamless deployments. My holistic approach integrates performance optimization, clean code practices, and user-centric design to deliver impactful digital solutions.
+            I’m a passionate Full Stack Developer with a strong focus on building scalable, secure, and high-performance digital solutions. I specialize in designing clean and efficient architectures that connect intuitive front-end interfaces with robust back-end systems. My expertise spans across modern technologies including React, Node.js, Spring Boot, and cloud platforms like AWS and Docker. With a deep understanding of CI/CD workflows, databases, and UI/UX principles, I aim to deliver impactful, reliable, and user-centered software experiences that drive innovation and performance.
           </div>
           <div className="skills-overview-list">
             <div className="skills-point">

@@ -50,7 +50,7 @@ export default function About() {
                   <li>
                     <span className="strong">Bachelor of Computer Science</span>
                     <span className="details">
-                      - Sri Eshwar College of Engineering, 2023 – 2027
+                      - Sri Eshwar College of Engineering, 2023 – 2027 <i>(8.12 CGPA)</i>
                     </span>
                   </li>
                   <li>
@@ -58,7 +58,7 @@ export default function About() {
                       Higher Secondary Certificate (HSC)
                     </span>
                     <span className="details">
-                      - PKD Matriculation Higher Secondary School, 2021 – 2023
+                      - PKD Matriculation Higher Secondary School, 2021 – 2023 <i>(75.5%)</i>
                     </span>
                   </li>
                   <li>
@@ -81,17 +81,42 @@ export default function About() {
                 <ul>
                   <li>
                     <span className="strong">
-                      SIH - 2025 Finalist (Internal)
+                      SIH 2024 &amp; 2025
                     </span>
                     <span className="details">
-                      - Smart India Hackathon 2025, Finalist (Internal)
+                      - Consecutively nominated after clearing prelims to represent the institution with innovative solutions.
                     </span>
                   </li>
                   <li>
-                    <span className="strong">Second Runner-Up</span>
+                    <span className="strong">
+                      Futurepreneur 2024 (StartupTN)
+                    </span>
                     <span className="details">
-                      - Futurepreneur 2025, District Level, Rajalakshmi
-                      Institute of Technology (RIT)
+                      - Secured 3rd place (Coimbatore zone) for developing a high-impact startup idea.
+                    </span>
+                  </li>
+                  <li>
+                    <span className="strong">
+                      Udhayam 2024
+                    </span>
+                    <span className="details">
+                      - Presented IoT automation solutions designed for elderly and differently-abled individuals.
+                    </span>
+                  </li>
+                  <li>
+                    <span className="strong">
+                      Coding Carnival
+                    </span>
+                    <span className="details">
+                      - Secured 1st Runner-Up among 3200+ participants on Engineers’ Day.
+                    </span>
+                  </li>
+                  <li>
+                    <span className="strong">
+                      GitHub &amp; Leetcode
+                    </span>
+                    <span className="details">
+                      - 13+ Innovative Real-World Projects (7+ Solo Projects) with 900+ Commits, Leetcode: 110+ problems.
                     </span>
                   </li>
                 </ul>

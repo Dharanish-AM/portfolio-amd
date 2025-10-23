@@ -66,6 +66,26 @@ export default function Projects() {
       tech: ["#Node", "#Socket.io", "#React", "#Express", "#WebRTC"],
       github: "https://github.com/Dharanish-AM/CmdCast",
     },
+    {
+      title: "Swoosh",
+      description:
+        "A secure, room-based, high-performance file transfer platform delivering end-to-end encrypted, high-speed transfers with QR/pairing authentication for seamless, reliable, and robust cross-device communication.",
+      tech: ["#Spring Boot", "#Spring Security", "#React", "#Electron", "#MySQL", "#Redis", "#Networks"],
+      github: "https://github.com/Dharanish-AM/Swoosh"
+    },
+    {
+      title: "RouteLens — VS Code Extension",
+      description:
+        "A VS Code extension for Node.js projects that visualizes API endpoints in a TreeView, supporting Express and Fastify for easier debugging and documentation.",
+      tech: ["#JavaScript", "#VSCode API", "#Node.js", "#Express", "#Fastify", "#AST Parsing", "#Babel"],
+      github: "https://github.com/Dharanish-AM/RouteLens"
+    },
+   {
+      title: "Code Tracer CLI",
+      description: "A powerful CLI tool for analyzing JavaScript/TypeScript codebases. Provides file breakdowns, detects large functions, identifies circular dependencies, tracks most-used imports, and gives optimization suggestions to improve performance and maintainability.",
+      tech: ["#Node.js", "#JavaScript", "#TypeScript", "#CLI", "#CodeAnalysis"],
+      github: "https://github.com/Dharanish-AM/Code-Tracer-CLI"
+    }
   ]);
 
   const projectRefs = useRef([]);
