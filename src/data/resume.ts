@@ -151,7 +151,7 @@ export const resumeData = {
       name: "InterVue AI",
       year: "2024",
       description: "AI interview simulator generating real-time technical questions and providing structured feedback on responses.",
-      techStack: ["React", "Node.js", "FastAPI", "Python", "OpenAI", "WebSockets", "Speech-to-Text", "AI Evaluation Engine"],
+      techStack: ["React", "Node.js", "FastAPI", "Python", "OpenAI", "WebSockets", "AI Evaluation Engine"],
       link: "https://github.com/Dharanish-AM/InterVue-AI",
       github: "https://github.com/Dharanish-AM/InterVue-AI"
     },
