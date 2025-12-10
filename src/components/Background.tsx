@@ -24,6 +24,27 @@ export const Background = () => {
       {/* Deep Purple Gradient Base */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-900/20 via-[#030014] to-[#030014]" />
       
+      {/* Abstract Geometric Overlay */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+         <motion.svg
+            initial={{ opacity: 0, rotate: 0 }}
+            animate={{ opacity: 0.4, rotate: 360 }}
+            transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
+            className="absolute top-[-50%] right-[-20%] w-[1000px] h-[1000px] text-violet-900/10"
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+         >
+           <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" />
+           <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="0.5" transform="rotate(20 50 50)" />
+           <circle cx="50" cy="50" r="25" stroke="currentColor" strokeWidth="0.5" transform="rotate(40 50 50)" />
+           <path d="M50 0 L50 100" stroke="currentColor" strokeWidth="0.2" />
+           <path d="M0 50 L100 50" stroke="currentColor" strokeWidth="0.2" />
+           <path d="M15 15 L85 85" stroke="currentColor" strokeWidth="0.2" />
+           <path d="M85 15 L15 85" stroke="currentColor" strokeWidth="0.2" />
+         </motion.svg>
+      </div>
+
       {/* Noise Texture */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.04] pointer-events-none mix-blend-overlay" />
       

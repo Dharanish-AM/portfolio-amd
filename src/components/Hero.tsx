@@ -16,7 +16,7 @@ export const Hero = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-xl md:text-2xl text-[var(--text-secondary)] font-medium mb-4">Hello, I'm</h2>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-[var(--accent-primary)]">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-gradient">
                {resumeData.personal.name}
             </h1>
             <div className="h-10 overflow-hidden">

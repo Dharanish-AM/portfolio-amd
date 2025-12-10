@@ -67,3 +67,13 @@ html {
   width: 100%;
   min-height: 100vh;
 }
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(to right, #c084fc, #a855f7, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+}
