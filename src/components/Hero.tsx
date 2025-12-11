@@ -16,9 +16,30 @@ export const Hero = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-xl md:text-2xl text-[var(--text-secondary)] font-medium mb-4">Hello, I'm</h2>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-gradient">
-               {resumeData.personal.name}
-            </h1>
+            <motion.h1 
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.1 }
+                }
+              }}
+              className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-gradient"
+            >
+               {resumeData.personal.name.split("").map((char, index) => (
+                 <motion.span
+                   key={index}
+                   variants={{
+                     hidden: { opacity: 0, y: 20 },
+                     visible: { opacity: 1, y: 0 }
+                   }}
+                 >
+                   {char}
+                 </motion.span>
+               ))}
+            </motion.h1>
             <div className="h-10 overflow-hidden">
                 <motion.h2 
                     initial={{ y: "100%" }}
@@ -46,7 +67,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <a href="#projects" className="group flex items-center justify-center gap-2 px-8 py-3 bg-[var(--text-primary)] text-[var(--bg-primary)] rounded-full font-medium hover:scale-105 transition-transform shadow-lg shadow-white/10 hover:shadow-white/20">
+            <a href="#projects" className="group flex items-center justify-center gap-2 px-8 py-3 bg-[var(--text-primary)] text-[var(--bg-primary)] rounded-full font-medium hover:scale-105 transition-transform shadow-lg shadow-white/10">
               View Projects
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
@@ -80,10 +101,8 @@ export const Hero = () => {
           className="relative hidden md:block perspective-1000"
         >
           <TiltCard className="w-full">
-            <div className="relative z-10 w-full rounded-3xl bg-[var(--bg-card)]/80 backdrop-blur-2xl border border-[var(--border-card)] p-8 flex flex-col justify-between overflow-hidden group hover:border-violet-500/50 transition-colors duration-500 shadow-2xl shadow-black/50">
+            <div className="relative z-10 w-full rounded-3xl bg-[var(--bg-card)]/80 backdrop-blur-2xl border border-[var(--border-card)] p-8 flex flex-col justify-between overflow-hidden group hover:border-[var(--border-card-hover)] transition-colors duration-500 shadow-2xl shadow-black/50">
                {/* Decorative Elements */}
-               <div className="absolute -top-20 -right-20 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl group-hover:bg-violet-500/20 transition-colors" />
-               <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors" />
 
 
                
@@ -99,12 +118,12 @@ export const Hero = () => {
                  </div>
                </div>
 
-                <div className="font-mono text-xs md:text-sm text-slate-300 relative z-10 backdrop-blur-sm bg-[#0a0a0a]/90 p-6 rounded-2xl border border-white/10 shadow-inner overflow-hidden">
+                <div className="font-mono text-xs md:text-sm text-slate-300 relative z-10 backdrop-blur-sm bg-[#1e1e2e]/90 p-6 rounded-2xl border border-white/10 shadow-inner overflow-hidden">
                    <p><span className="text-violet-400">const</span> profile <span className="text-slate-500">=</span> <span className="text-yellow-400">{"{"}</span></p>
                    <motion.div
                      initial={{ opacity: 0, x: -20 }}
                      animate={{ opacity: 1, x: 0 }}
-                     transition={{ delay: 1 }}
+                     transition={{ delay: 0.5 }}
                      className="space-y-1"
                    >
                        <p className="pl-4">name: <span className="text-green-400">"{resumeData.personal.name}"</span>,</p>

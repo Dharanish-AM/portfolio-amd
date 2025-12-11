@@ -24,7 +24,7 @@
   --bg-card-hover: rgba(255, 255, 255, 0.1);
   --border-card: rgba(255, 255, 255, 0.1);
   --border-card-hover: rgba(255, 255, 255, 0.2);
-  --accent-primary: #8b5cf6; /* Violet 500 */
+  --accent-primary: #a78bfa; /* Violet 400 */
 
   color: var(--text-primary);
   background-color: var(--bg-primary);
