@@ -189,7 +189,7 @@ export const Projects = () => {
           <div className="flex justify-center pt-8">
             <button
               onClick={handleViewMore}
-              className="group flex items-center justify-center gap-2 px-8 py-3 bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] rounded-full font-medium hover:bg-[var(--bg-card-hover)] hover:border-violet-500/30 transition-all hover:scale-105 backdrop-blur-sm"
+              className="group flex items-center justify-center gap-2 px-8 py-3 bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] rounded-full font-medium hover:bg-[var(--bg-card-hover)] hover:border-[var(--accent-primary)]/30 transition-all hover:scale-105 backdrop-blur-sm"
             >
               View More Projects
               <ChevronDown

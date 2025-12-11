@@ -66,7 +66,7 @@ const AchievementCard = ({
     <motion.div variants={itemVariants} className="h-full">
       <div className="h-full group relative p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-300 flex flex-col gap-4">
         <div className="flex items-start gap-4 relative z-10">
-          <div className="p-3 rounded-2xl bg-violet-400/10 text-violet-400 border border-violet-400/10">
+          <div className="p-3 rounded-2xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] border border-[var(--accent-primary)]/10">
             <Icon size={24} />
           </div>
           <div className="space-y-2 flex-1">
@@ -92,7 +92,7 @@ const CertificationCard = ({
     <motion.div variants={itemVariants} className="h-full">
       <div className="h-full group relative p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-300 flex flex-col gap-4">
         <div className="flex items-start gap-4 relative z-10">
-          <div className="p-3 rounded-2xl bg-violet-400/10 text-violet-400 border border-violet-400/10">
+          <div className="p-3 rounded-2xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] border border-[var(--accent-primary)]/10">
             <BadgeCheck size={24} />
           </div>
           <div className="space-y-2 flex-1">

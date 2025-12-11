@@ -11,33 +11,33 @@ export const Skills = () => {
       name: "Languages & Frameworks",
       icon: Code2,
       skills: resumeData.skills.languages,
-      color: "text-violet-400",
-      bg: "bg-violet-400/10",
-      border: "border-violet-400/20",
+      color: "text-[var(--accent-primary)]",
+      bg: "bg-[var(--accent-primary)]/10",
+      border: "border-[var(--accent-primary)]/20",
     },
     {
       name: "Cloud & Databases",
       icon: Database,
       skills: resumeData.skills.cloud,
-      color: "text-violet-400",
-      bg: "bg-violet-400/10",
-      border: "border-violet-400/20",
+      color: "text-[var(--accent-primary)]",
+      bg: "bg-[var(--accent-primary)]/10",
+      border: "border-[var(--accent-primary)]/20",
     },
     {
       name: "System Design & DevOps",
       icon: Server,
       skills: resumeData.skills.systemDesign,
-      color: "text-violet-400",
-      bg: "bg-violet-400/10",
-      border: "border-violet-400/20",
+      color: "text-[var(--accent-primary)]",
+      bg: "bg-[var(--accent-primary)]/10",
+      border: "border-[var(--accent-primary)]/20",
     },
     {
       name: "Security & Tools",
       icon: Wrench,
       skills: resumeData.skills.tools,
-      color: "text-violet-400",
-      bg: "bg-violet-400/10",
-      border: "border-violet-400/20",
+      color: "text-[var(--accent-primary)]",
+      bg: "bg-[var(--accent-primary)]/10",
+      border: "border-[var(--accent-primary)]/20",
     },
   ];
 
@@ -45,8 +45,8 @@ export const Skills = () => {
     <Section id="skills">
       <div className="flex flex-col gap-12 relative">
         {/* Decorative Background Elements */}
-        <div className="absolute top-10 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-10 left-0 w-96 h-96 bg-violet-500/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-10 right-0 w-96 h-96 bg-[var(--info)]/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-10 left-0 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-3xl -z-10" />
 
         <div className="space-y-4 relative z-10">
           <TextReveal
@@ -86,7 +86,7 @@ export const Skills = () => {
                   <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
                   <div className="relative z-10 space-y-8">
-                    <div className="flex items-center gap-5 border-b border-white/5 pb-6">
+                    <div className="flex items-center gap-5 border-b border-[var(--border-card)] pb-6">
                       <div
                         className={`w-14 h-14 rounded-2xl ${category.bg} flex items-center justify-center ${category.color} shadow-lg ring-1 ring-white/5 hover:scale-110 hover:rotate-6 transition-all duration-500`}
                       >
@@ -120,7 +120,7 @@ export const Skills = () => {
                           }}
                           whileHover={{ scale: 1.05, y: -2 }}
                           whileTap={{ scale: 0.95 }}
-                          className={`px-4 py-2 bg-[var(--bg-primary)]/40 border border-white/5 rounded-xl text-[var(--text-secondary)] text-sm font-medium hover:text-white hover:bg-[var(--accent-primary)]/20 hover:border-[var(--accent-primary)]/30 transition-colors cursor-default shadow-sm backdrop-blur-sm`}
+                          className={`px-4 py-2 bg-[var(--bg-primary)]/40 border border-[var(--border-card)] rounded-xl text-[var(--text-secondary)] text-sm font-medium hover:text-white hover:bg-[var(--accent-primary)]/20 hover:border-[var(--accent-primary)]/30 transition-colors cursor-default shadow-sm backdrop-blur-sm`}
                         >
                           {skill}
                         </motion.div>

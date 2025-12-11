@@ -26,6 +26,12 @@
   --border-card-hover: rgba(255, 255, 255, 0.2);
   --accent-primary: #a78bfa; /* Violet 400 */
 
+  /* Status Colors */
+  --success: #22c55e;
+  --warning: #eab308;
+  --error: #ef4444;
+  --info: #3b82f6;
+
   color: var(--text-primary);
   background-color: var(--bg-primary);
 
@@ -47,6 +53,12 @@
   --border-card: rgba(0, 0, 0, 0.08);
   --border-card-hover: rgba(0, 0, 0, 0.15);
   --accent-primary: #7c3aed; /* Violet 600 */
+
+  /* Status Colors */
+  --success: #16a34a;
+  --warning: #ca8a04;
+  --error: #dc2626;
+  --info: #2563eb;
 }
 
 body {

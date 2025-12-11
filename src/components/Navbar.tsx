@@ -37,7 +37,7 @@ export const Navbar = () => {
       <div className="w-full px-6 md:px-12 flex justify-between items-center h-20">
         <a
           href="#home"
-          className="text-2xl font-bold text-violet-400 hover:text-violet-300 transition-colors tracking-tight"
+          className="text-2xl font-bold text-[var(--accent-primary)] hover:text-[var(--text-primary)] transition-colors tracking-tight"
         >
           D15
         </a>

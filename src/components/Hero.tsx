@@ -31,7 +31,7 @@ export const Hero = () => {
                   transition: { staggerChildren: 0.1 },
                 },
               }}
-              className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-violet-400"
+              className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-[var(--accent-primary)]"
             >
               {resumeData.personal.name.split("").map((char, index) => (
                 <motion.span
@@ -101,9 +101,9 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="pt-8 flex items-center gap-6 text-[var(--text-secondary)]"
           >
-            <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-4 py-2 rounded-full cursor-default hover:bg-green-500/20 transition-colors">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]" />
-              <span className="text-green-500 font-medium text-sm">
+            <div className="flex items-center gap-2 bg-[var(--success)]/10 border border-[var(--success)]/20 px-4 py-2 rounded-full cursor-default hover:bg-[var(--success)]/20 transition-colors">
+              <div className="w-2 h-2 rounded-full bg-[var(--success)] animate-pulse shadow-[0_0_10px_var(--success)]" />
+              <span className="text-[var(--success)] font-medium text-sm">
                 Open to work
               </span>
             </div>
@@ -140,8 +140,8 @@ export const Hero = () => {
 
               <div className="font-mono text-xs md:text-sm text-slate-300 relative z-10 backdrop-blur-sm bg-[#1e1e2e]/90 p-6 rounded-2xl border border-white/10 shadow-inner overflow-hidden">
                 <p>
-                  <span className="text-violet-400">const</span> profile{" "}
-                  <span className="text-slate-500">=</span>{" "}
+                  <span className="text-[var(--accent-primary)]">const</span>{" "}
+                  profile <span className="text-slate-500">=</span>{" "}
                   <span className="text-yellow-400">{"{"}</span>
                 </p>
                 <motion.div
@@ -185,7 +185,7 @@ export const Hero = () => {
                   <p className="pl-4">],</p>
                   <p className="pl-4">
                     status:{" "}
-                    <span className="text-purple-400">
+                    <span className="text-[var(--accent-primary)]">
                       "{resumeData.hero.status}"
                     </span>
                   </p>

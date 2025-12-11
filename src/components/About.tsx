@@ -21,7 +21,7 @@ export const About = () => {
             whileInView={{ width: "5rem" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="h-1 bg-violet-400 rounded-full"
+            className="h-1 bg-[var(--accent-primary)] rounded-full"
           />
         </div>
 
@@ -38,13 +38,13 @@ export const About = () => {
                 <p key={index}>{paragraph}</p>
               ))}
 
-              <div className="relative pl-4 py-2 mt-4 border-l-2 border-violet-400/50">
+              <div className="relative pl-4 py-2 mt-4 border-l-2 border-[var(--accent-primary)]/50">
                 <p className="italic text-[var(--text-primary)] font-medium text-lg">
                   "{resumeData.personal.about.quote}"
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 pt-4 text-violet-400 font-mono text-sm uppercase tracking-wider">
+              <div className="flex items-center gap-3 pt-4 text-[var(--accent-primary)] font-mono text-sm uppercase tracking-wider">
                 <Terminal size={16} />
                 <span>{resumeData.personal.about.tagline}</span>
               </div>
