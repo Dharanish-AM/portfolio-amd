@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Github,
   Folder,
@@ -13,6 +13,7 @@ import {
   Box,
   Cpu,
   ChevronDown,
+  ArrowUpRight,
 } from "lucide-react";
 import { Section } from "./Section";
 import { resumeData } from "../data/resume";
@@ -57,9 +58,102 @@ const getTechIcon = (tech: string) => {
   }
 };
 
+const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: 0.6,
+        delay: (index % 2) * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="h-full group/card relative"
+    >
+      <TiltCard className="h-full">
+        <div className="h-full group relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] group-hover:border-[var(--border-card-hover)] transition-all duration-500 overflow-hidden flex flex-col backdrop-blur-md shadow-lg">
+          <div className="relative z-10 flex flex-col h-full gap-6">
+            <div className="flex justify-between items-start">
+              {/* Project Icon/Logo Area - Minimal */}
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-[var(--bg-card-hover)] text-[var(--accent-primary)]">
+                    <Folder size={20} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[var(--text-primary)] transition-colors group-hover:translate-x-1 duration-300 flex items-center gap-2">
+                    {project.name}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Links */}
+              <div className="flex gap-3">
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-primary)]/50 hover:bg-[var(--accent-primary)]/10 transition-all hover:scale-110 shadow-sm"
+                  >
+                    <Github size={18} />
+                  </a>
+                )}
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-primary)]/50 hover:bg-[var(--accent-primary)]/10 transition-all hover:scale-110 shadow-sm"
+                  >
+                    <ArrowUpRight size={18} />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-mono text-[var(--text-tertiary)] bg-[var(--bg-primary)]/30 px-2 py-0.5 rounded border border-[var(--border-card)]">
+                  {project.year}
+                </span>
+              </div>
+              <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
+                {project.description}
+              </p>
+            </div>
+
+            <div className="mt-auto pt-6 border-t border-[var(--border-card)]">
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech: string) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 text-xs font-medium text-[var(--accent-primary)] bg-[var(--accent-primary)]/5 rounded-lg border border-[var(--accent-primary)]/10 flex items-center gap-1.5 hover:bg-[var(--accent-primary)]/20 hover:border-[var(--accent-primary)]/30 transition-colors cursor-default"
+                  >
+                    {getTechIcon(tech)}
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </TiltCard>
+    </motion.div>
+  );
+};
+
 export const Projects = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const totalProjects = resumeData.projects.length;
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const handleViewMore = () => {
     setVisibleCount((prev) => Math.min(prev + 4, totalProjects));
@@ -67,7 +161,7 @@ export const Projects = () => {
 
   return (
     <Section id="projects">
-      <div className="flex flex-col gap-12">
+      <div ref={containerRef} className="flex flex-col gap-12">
         <div className="space-y-4">
           <TextReveal
             text="Featured Projects"
@@ -85,79 +179,11 @@ export const Projects = () => {
           />
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <motion.div style={{ y }} className="grid gap-8 md:grid-cols-2">
           {resumeData.projects.slice(0, visibleCount).map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.6,
-                delay: (index % 4) * 0.1, // Stagger effect based on column position
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="h-full"
-            >
-              <TiltCard className="h-full">
-                <div className="h-full group relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] group-hover:border-[var(--border-card-hover)] transition-all duration-500 overflow-hidden flex flex-col backdrop-blur-md shadow-lg">
-                  <div className="relative z-10 flex flex-col h-full gap-8">
-                    <div className="flex justify-between items-start">
-                      <div className="w-14 h-14 rounded-2xl bg-[var(--bg-card-hover)] flex items-center justify-center text-[var(--accent-primary)] shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                        <Folder size={28} />
-                      </div>
-                      <div className="flex gap-4">
-                        {project.github && (
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 rounded-lg bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-primary)]/50 hover:bg-[var(--accent-primary)]/10 transition-all hover:scale-110 shadow-sm"
-                          >
-                            <Github size={20} />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-baseline">
-                        <h3 className="text-2xl font-bold text-[var(--text-primary)] transition-colors group-hover:translate-x-1 duration-300 flex items-center gap-2">
-                          {project.name}
-                          {project.status === "Ongoing" && (
-                            <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] border border-[var(--accent-primary)]/30">
-                              Ongoing
-                            </span>
-                          )}
-                        </h3>
-                        <span className="text-sm font-mono text-[var(--text-tertiary)] group-hover:text-[var(--accent-primary)]/70 transition-colors">
-                          {project.year}
-                        </span>
-                      </div>
-                      <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-auto pt-6 border-t border-[var(--border-card)]">
-                      <div className="flex flex-wrap gap-2">
-                        {project.techStack.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1.5 text-xs font-medium text-[var(--accent-primary)] bg-[var(--accent-primary)]/5 rounded-lg border border-[var(--accent-primary)]/10 flex items-center gap-1.5 hover:bg-[var(--accent-primary)]/20 hover:border-[var(--accent-primary)]/30 transition-colors cursor-default"
-                          >
-                            {getTechIcon(tech)}
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </TiltCard>
-            </motion.div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
-        </div>
+        </motion.div>
 
         {visibleCount < totalProjects && (
           <div className="flex justify-center pt-8">

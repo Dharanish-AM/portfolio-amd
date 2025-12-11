@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Space Grotesk", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Space Grotesk", "Plus Jakarta Sans", ui-sans-serif, system-ui,
+    sans-serif;
 }
-
 
 :root {
   /* CSS Variables for Theme */
-  font-family: 'Space Grotesk', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Space Grotesk", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: dark;
-  
+
   /* CSS Variables for Theme */
-  --bg-primary: #12111C;
+  --bg-primary: #12111c;
   --bg-secondary: #0a0a0a;
   --text-primary: rgba(255, 255, 255, 0.95);
   --text-secondary: rgba(255, 255, 255, 0.6);
@@ -57,7 +57,6 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
-
 
 html {
   scroll-behavior: smooth;
