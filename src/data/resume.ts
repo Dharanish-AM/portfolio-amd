@@ -91,7 +91,7 @@ export const resumeData = {
       name: "BioKey",
       year: "2024",
       description:
-        "Cloud-based media platform with fingerprint authentication, featuring a custom biometric device and secure, encrypted cross-platform access.",
+        "BioKey is a cloud-powered biometric media access system integrating a custom fingerprint device with secure authentication. I engineered a cross-platform architecture enabling encrypted, reliable, and low-latency media retrieval with seamless plug‑and‑play usability and scalable cloud deployment.",
       techStack: [
         "React Native",
         "React",
@@ -109,7 +109,7 @@ export const resumeData = {
       name: "AlgoLog",
       year: "2025",
       description:
-        "Centralized student analytics platform for real-time tracking of coding performance via automated web scraping and insights-driven dashboards.",
+        "AlgoLog is a real-time coding analytics platform that aggregates student performance across multiple platforms using an automated scraping pipeline. It visualizes progress through interactive dashboards and generates insights to help institutions track outcomes at scale.",
       techStack: [
         "React",
         "Node.js",
@@ -127,7 +127,7 @@ export const resumeData = {
       name: "Swoosh",
       year: "2025",
       description:
-        "Secure, QR-driven peer-to-peer file sharing platform offering instant, isolated rooms and high-performance, encrypted transfers.",
+        "Swoosh is a secure peer-to-peer file-sharing platform enabling instant QR-based device pairing. It creates isolated, encrypted transfer rooms and uses a hybrid Electron + Spring microservice backend to ensure fast, reliable, and scalable file transfers.",
       techStack: [
         "React",
         "TailwindCSS",
@@ -145,7 +145,7 @@ export const resumeData = {
       name: "Vulnora AI",
       year: "Ongoing",
       description:
-        "Enterprise-grade, offline security scanner using LLM analysis to detect complex vulnerabilities and hardcoded secrets with deep contextual accuracy.",
+        "Vulnora AI is an offline, LLM-driven security scanner that detects deep, context-rich vulnerabilities and hardcoded secrets. It validates findings, generates actionable fixes, and supports multi-language analysis through a modular, cross-platform architecture.",
       techStack: [
         "Python",
         "FastAPI",
@@ -165,7 +165,7 @@ export const resumeData = {
       name: "TownTrolley",
       year: "2024",
       description:
-        "Marketplace connecting farmers directly with customers for local produce, empowering community agriculture.",
+        "TownTrolley is a local-produce marketplace connecting farmers and customers. It supports real-time listings, location-based discovery, and secure ordering to strengthen community agriculture.",
       techStack: ["React", "Express", "Node", "MongoDB", "Leaflet"],
       link: "https://github.com/JeyaprakashRajesh/TownTrolley",
       github: "https://github.com/JeyaprakashRajesh/TownTrolley",
@@ -174,7 +174,7 @@ export const resumeData = {
       name: "Earthing Healthiness Monitor",
       year: "2024",
       description:
-        "IoT system monitoring earth leakage currents in real-time using LoRa sensors and a web dashboard.",
+        "An IoT-based monitoring system tracking earth leakage currents using LoRa sensors, offering real-time analytics and early fault detection through an interactive dashboard.",
       techStack: ["React", "Express", "Node", "MongoDB", "LoRa", "Sensors"],
       link: "https://github.com/Dharanish-AM/Earthing-Healthiness-Monitor",
       github: "https://github.com/Dharanish-AM/Earthing-Healthiness-Monitor",
@@ -183,7 +183,7 @@ export const resumeData = {
       name: "Eatzly",
       year: "2024",
       description:
-        "QR-based mobile food ordering platform streamlining menu browsing, ordering, and payments.",
+        "Eatzly is a QR-based food ordering platform that digitizes menu browsing, ordering, and payments to improve order accuracy and reduce restaurant wait times.",
       techStack: ["React", "Express", "Node", "MongoDB", "QR Codes"],
       link: "https://github.com/JeyaprakashRajesh/Eatzly",
       github: "https://github.com/JeyaprakashRajesh/Eatzly",
@@ -192,7 +192,7 @@ export const resumeData = {
       name: "MILVER",
       year: "2024",
       description:
-        "Milk delivery management system optimizing driver routes and tracking bottle distribution.",
+        "MILVER automates milk delivery logistics by optimizing routes, tracking bottle usage, and simplifying subscription-based order management.",
       techStack: ["React", "Express", "Node", "MongoDB", "Leaflet"],
       link: "https://github.com/Dharanish-AM/MILVER",
       github: "https://github.com/Dharanish-AM/MILVER",
@@ -201,7 +201,7 @@ export const resumeData = {
       name: "TrackWise",
       year: "2024",
       description:
-        "Student activity tracker for tutors with task assignment, submission monitoring, and simplified analytics.",
+        "TrackWise is a student activity management tool for tutors featuring task assignment, submission tracking, and performance visualization.",
       techStack: ["React", "Node", "Express", "MongoDB"],
       link: "https://github.com/Dharanish-AM/TrackWise",
       github: "https://github.com/Dharanish-AM/TrackWise",
@@ -210,7 +210,7 @@ export const resumeData = {
       name: "NeuroBridge",
       year: "2024",
       description:
-        "AI platform analyzing EEG signals to detect attention levels and mental states for neurofeedback.",
+        "NeuroBridge analyzes EEG data to infer cognitive states such as focus and relaxation, using AI-driven insights presented through a real-time neurofeedback dashboard.",
       techStack: ["AI", "EEG", "React", "TailwindCSS", "Node", "Express"],
       link: "https://github.com/Dharanish-AM/NeuroBridge",
       github: "https://github.com/Dharanish-AM/NeuroBridge",
@@ -219,7 +219,7 @@ export const resumeData = {
       name: "CmdCast",
       year: "2024",
       description:
-        "Real-time tool for broadcasting and synchronizing terminal commands across multiple developer machines.",
+        "CmdCast is a real-time collaboration tool that broadcasts terminal commands across multiple machines using WebRTC and WebSockets, ideal for workshops and pair programming.",
       techStack: ["Node", "Socket.io", "React", "Express", "WebRTC"],
       link: "https://github.com/Dharanish-AM/CmdCast",
       github: "https://github.com/Dharanish-AM/CmdCast",
@@ -228,7 +228,7 @@ export const resumeData = {
       name: "RouteLens — VS Code Extension",
       year: "2024",
       description:
-        "VS Code extension visualizing Node.js API endpoints in a tree view for easier debugging.",
+        "RouteLens is a VS Code extension that parses Node.js projects to visualize API routes in a structured tree view, improving debugging and project understanding.",
       techStack: [
         "JavaScript",
         "VSCode API",
@@ -245,7 +245,7 @@ export const resumeData = {
       name: "Code Tracer CLI",
       year: "2024",
       description:
-        "CLI tool for JavaScript/TypeScript codebase analysis, detecting circular dependencies and performance bottlenecks.",
+        "Code Tracer is a CLI tool that analyzes JavaScript/TypeScript projects to detect circular dependencies, performance bottlenecks, and structural issues using automated static analysis.",
       techStack: ["Node.js", "JavaScript", "TypeScript", "CLI", "CodeAnalysis"],
       link: "https://github.com/Dharanish-AM/Code-Tracer-CLI",
       github: "https://github.com/Dharanish-AM/Code-Tracer-CLI",
@@ -254,7 +254,7 @@ export const resumeData = {
       name: "InterVue AI",
       year: "2024",
       description:
-        "AI interview simulator generating real-time technical questions and providing structured feedback on responses.",
+        "InterVue AI is an interactive interview simulator that generates real-time technical questions, evaluates user responses using AI, and provides structured improvement feedback.",
       techStack: [
         "React",
         "Node.js",
@@ -271,7 +271,7 @@ export const resumeData = {
       name: "ThinkBook LM",
       year: "2024",
       description:
-        "Privacy-focused, offline research assistant using local RAG to answer questions from documents without cloud data transfer.",
+        "ThinkBook LM is a privacy-focused research assistant using offline RAG pipelines to answer questions from documents locally, ensuring complete data confidentiality with accurate contextual results.",
       techStack: [
         "FastAPI",
         "React",
@@ -316,28 +316,38 @@ export const resumeData = {
   achievements: [
     {
       title: "SIH 2024 & 2025",
-      description: "Consecutively nominated after clearing prelims",
+      description:
+        "Consecutively nominated after clearing prelims to represent the institution with innovative solutions.",
     },
     {
       title: "Futurepreneur 2024 (StartupTN)",
-      description: "Secured 3rd place (Coimbatore zone)",
+      description:
+        "Secured 3rd place (Coimbatore zone) for developing a high-impact startup idea.",
     },
     {
       title: "Patent Publication",
-      description: "BioKey: A Biometric Authentication-Based Application",
+      description:
+        "BioKey: A Biometric Authentication-Based Application for Secure Data Access (202541051836A).",
     },
     {
       title: "Paper Publication",
-      description: "Lurnix: An Intelligent Ecosystem for Neurodiverse Learning",
+      description:
+        "Lurnix: An Intelligent Ecosystem for Neurodiverse Learning through AI and Multimodal Content.",
     },
     {
       title: "Coding Carnival",
-      description: "Secured 1st Runner-Up among 3200+ participants",
+      description:
+        "Secured 1st Runner-Up among 3200+ participants on Engineers’ Day.",
+    },
+    {
+      title: "Open Source",
+      description:
+        "Built RouteLens (VS Code) & Code Tracer CLI (NPM) for enhanced developer productivity.",
     },
     {
       title: "GitHub",
       description:
-        "14+ Real-World Projects (8+ Solo Projects) with 1000+ Contributions",
+        "14+ Real-World Projects (8+ Solo Projects) with 1000+ Contributions; LeetCode: 110+ problems.",
     },
   ],
   skills: {
@@ -370,7 +380,7 @@ export const resumeData = {
       "Vercel",
       "Netlify",
       "Render",
-      "Terraform",
+      "Terraform basics",
     ],
     systemDesign: [
       "Microservices",
@@ -383,6 +393,9 @@ export const resumeData = {
       "API Gateways",
       "CI/CD",
       "Containerization",
+      "Message Queues",
+      "Rate Limiting",
+      "Monitoring & Logging",
     ],
     tools: [
       "JWT",
