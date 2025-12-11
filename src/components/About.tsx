@@ -32,8 +32,8 @@ export const About = () => {
           transition={{ duration: 0.5 }}
           className="w-full"
         >
-          <div className="relative p-8 md:p-10 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-300 flex flex-col gap-8 group">
-            <div className="relative z-10 space-y-4 text-[var(--text-secondary)] leading-relaxed text-base">
+          <div className="relative p-8 md:p-10 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-300 flex flex-col md:flex-row gap-8 group">
+            <div className="relative z-10 space-y-4 text-[var(--text-secondary)] leading-relaxed text-base flex-1">
               {resumeData.personal.about.bio.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
@@ -49,6 +49,23 @@ export const About = () => {
                 <span>{resumeData.personal.about.tagline}</span>
               </div>
             </div>
+
+            {/* Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex-shrink-0"
+            >
+              <div className="w-64 h-64 md:w-80 md:h-80 mx-auto">
+                <img
+                  src="/profile.png"
+                  alt="Profile"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

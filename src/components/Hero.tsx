@@ -2,8 +2,173 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { resumeData } from "../data/resume";
 import { TiltCard } from "./TiltCard";
+import { useTheme } from "../context/ThemeContext";
+import { useState, useEffect } from "react";
 
 export const Hero = () => {
+  const { theme } = useTheme();
+  const [displayedCode, setDisplayedCode] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+  // Build the code string
+  const codeLines = [
+    `const profile = {`,
+    `  name: "${resumeData.hero.name}",`,
+    `  role: "${resumeData.hero.role}",`,
+    `  mission: "${resumeData.hero.mission}",`,
+    `  specialties: [`,
+    `    ${resumeData.hero.specialties.map((s) => `"${s}"`).join(", ")}`,
+    `  ],`,
+    `  principles: [`,
+    `    ${resumeData.hero.principles.map((p) => `"${p}"`).join(", ")}`,
+    `  ],`,
+    `  status: "${resumeData.hero.status}"`,
+    `};`,
+  ];
+
+  const fullCode = codeLines.join("\n");
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingSpeed = 10; // milliseconds per character - faster!
+    const startDelay = 600; // initial delay before typing starts
+
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        if (currentIndex <= fullCode.length) {
+          setDisplayedCode(fullCode.slice(0, currentIndex));
+          currentIndex++;
+        } else {
+          setIsTypingComplete(true);
+          clearInterval(interval);
+        }
+      }, typingSpeed);
+
+      return () => clearInterval(interval);
+    }, startDelay);
+
+    return () => clearTimeout(timer);
+  }, [fullCode]);
+
+  // Function to render code with syntax highlighting with different colors per property
+  const renderSyntaxHighlightedCode = (code: string) => {
+    const colors = {
+      keyword: theme === "dark" ? "var(--accent-primary)" : "#7c3aed",
+      operator: theme === "dark" ? "#64748b" : "#94a3b8",
+      bracket: theme === "dark" ? "#facc15" : "#ca8a04",
+      name: theme === "dark" ? "#4ade80" : "#16a34a",
+      role: theme === "dark" ? "#60a5fa" : "#2563eb",
+      mission: theme === "dark" ? "#fb923c" : "#ea580c",
+      array: theme === "dark" ? "#fef08a" : "#ca8a04",
+      status: theme === "dark" ? "var(--accent-primary)" : "#7c3aed",
+      property: theme === "dark" ? "#cbd5e1" : "#334155",
+    };
+
+    const lines = code.split('\n');
+    const result: JSX.Element[] = [];
+    
+    lines.forEach((line, lineIndex) => {
+      const trimmed = line.trim();
+      
+      // Parse each line based on its content
+      if (trimmed.startsWith('const')) {
+        // const profile = {
+        const parts = line.split(/(\bconst\b|\bprofile\b|=|{)/g).filter(Boolean);
+        parts.forEach((part, i) => {
+          if (part === 'const') {
+            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.keyword }}>{part}</span>);
+          } else if (part === '=') {
+            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+          } else if (part === '{') {
+            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.bracket }}>{part}</span>);
+          } else {
+            result.push(<span key={`${lineIndex}-${i}`}>{part}</span>);
+          }
+        });
+      } else if (trimmed.startsWith('name:')) {
+        // name: "..."
+        const match = line.match(/^(\s*)(name)(:)(\s*)(".*?")(,?)$/);
+        if (match) {
+          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
+          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
+          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
+          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
+          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.name }}>{match[5]}</span>);
+          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+        } else {
+          result.push(<span key={lineIndex}>{line}</span>);
+        }
+      } else if (trimmed.startsWith('role:')) {
+        const match = line.match(/^(\s*)(role)(:)(\s*)(".*?")(,?)$/);
+        if (match) {
+          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
+          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
+          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
+          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
+          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.role }}>{match[5]}</span>);
+          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+        } else {
+          result.push(<span key={lineIndex}>{line}</span>);
+        }
+      } else if (trimmed.startsWith('mission:')) {
+        const match = line.match(/^(\s*)(mission)(:)(\s*)(".*?")(,?)$/);
+        if (match) {
+          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
+          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
+          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
+          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
+          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.mission }}>{match[5]}</span>);
+          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+        } else {
+          result.push(<span key={lineIndex}>{line}</span>);
+        }
+      } else if (trimmed.startsWith('status:')) {
+        const match = line.match(/^(\s*)(status)(:)(\s*)(".*?")$/);
+        if (match) {
+          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
+          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
+          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
+          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
+          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.status }}>{match[5]}</span>);
+        } else {
+          result.push(<span key={lineIndex}>{line}</span>);
+        }
+      } else if (trimmed.includes('"Full-Stack"') || trimmed.includes('"Keep it simple"')) {
+        // Array content lines
+        result.push(<span key={lineIndex} style={{ color: colors.array }}>{line}</span>);
+      } else if (trimmed.includes('[') || trimmed.includes(']')) {
+        // Array brackets
+        const parts = line.split(/(\[|\]|,)/g);
+        parts.forEach((part, i) => {
+          if (part === '[' || part === ']') {
+            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+          } else if (part === ',') {
+            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+          } else {
+            result.push(<span key={`${lineIndex}-${i}`}>{part}</span>);
+          }
+        });
+      } else if (trimmed === '};') {
+        const match = line.match(/^(\s*)(})(;)$/);
+        if (match) {
+          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
+          result.push(<span key={`${lineIndex}-1`} style={{ color: colors.bracket }}>{match[2]}</span>);
+          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
+        } else {
+          result.push(<span key={lineIndex}>{line}</span>);
+        }
+      } else {
+        result.push(<span key={lineIndex}>{line}</span>);
+      }
+      
+      if (lineIndex < lines.length - 1) {
+        result.push(<span key={`newline-${lineIndex}`}>{'\n'}</span>);
+      }
+    });
+
+    return <>{result}</>;
+  };
+  
   return (
     <section
       id="home"
@@ -121,7 +286,11 @@ export const Hero = () => {
           className="relative perspective-1000"
         >
           <TiltCard className="w-full">
-            <div className="relative z-10 w-full rounded-3xl bg-[var(--bg-card)]/80 backdrop-blur-2xl border border-[var(--border-card)] p-8 flex flex-col justify-between overflow-hidden group hover:border-[var(--border-card-hover)] transition-colors duration-500 shadow-2xl shadow-black/50">
+            <div className={`relative z-10 w-full rounded-3xl ${
+              theme === "dark" ? "bg-[var(--bg-card)]/80" : "bg-white/80"
+            } backdrop-blur-2xl border border-[var(--border-card)] p-8 flex flex-col justify-between overflow-hidden group hover:border-[var(--border-card-hover)] transition-colors duration-500 shadow-2xl ${
+              theme === "dark" ? "shadow-black/50" : "shadow-gray-300/50"
+            }`}>
               {/* Decorative Elements */}
 
               {/* Header removed to make space for code */}
@@ -138,61 +307,25 @@ export const Hero = () => {
                 </div>
               </div>
 
-              <div className="font-mono text-xs md:text-sm text-slate-300 relative z-10 backdrop-blur-sm bg-[#1e1e2e]/90 p-6 rounded-2xl border border-white/10 shadow-inner overflow-hidden">
-                <p>
-                  <span className="text-[var(--accent-primary)]">const</span>{" "}
-                  profile <span className="text-slate-500">=</span>{" "}
-                  <span className="text-yellow-400">{"{"}</span>
-                </p>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="space-y-1"
-                >
-                  <p className="pl-4">
-                    name:{" "}
-                    <span className="text-green-400">
-                      "{resumeData.hero.name}"
-                    </span>
-                    ,
-                  </p>
-                  <p className="pl-4">
-                    role:{" "}
-                    <span className="text-blue-400">
-                      "{resumeData.hero.role}"
-                    </span>
-                    ,
-                  </p>
-                  <p className="pl-4 whitespace-normal">
-                    mission:{" "}
-                    <span className="text-orange-400">
-                      "{resumeData.hero.mission}"
-                    </span>
-                    ,
-                  </p>
-                  <p className="pl-4">specialties: [</p>
-                  <p className="pl-8 text-yellow-200">
-                    {resumeData.hero.specialties
-                      .map((s) => `"${s}"`)
-                      .join(", ")}
-                  </p>
-                  <p className="pl-4">],</p>
-                  <p className="pl-4">principles: [</p>
-                  <p className="pl-8 text-yellow-200">
-                    {resumeData.hero.principles.map((p) => `"${p}"`).join(", ")}
-                  </p>
-                  <p className="pl-4">],</p>
-                  <p className="pl-4">
-                    status:{" "}
-                    <span className="text-[var(--accent-primary)]">
-                      "{resumeData.hero.status}"
-                    </span>
-                  </p>
-                </motion.div>
-                <p>
-                  <span className="text-yellow-400">{"}"}</span>;
-                </p>
+              <div className="font-mono text-xs md:text-sm relative z-10 backdrop-blur-sm bg-[#1e1e2e]/90 p-6 rounded-2xl border border-white/10 shadow-inner overflow-hidden min-h-[320px]"
+                style={{
+                  backgroundColor: theme === "dark" ? "rgba(30, 30, 46, 0.9)" : "rgba(248, 250, 252, 0.95)",
+                  borderColor: theme === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
+                  color: theme === "dark" ? "#cbd5e1" : "#334155"
+                }}
+              >
+                <div className="whitespace-pre-wrap">
+                  {renderSyntaxHighlightedCode(displayedCode)}
+                  {!isTypingComplete && (
+                    <span 
+                      className="inline-block w-[2px] h-[1em] ml-[1px] align-middle"
+                      style={{ 
+                        backgroundColor: theme === "dark" ? "#a78bfa" : "#7c3aed",
+                        animation: "blink 1s step-end infinite"
+                      }}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </TiltCard>
