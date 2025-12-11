@@ -107,15 +107,20 @@ export const Projects = () => {
           />
         </div>
 
-        <motion.div
-          className="grid gap-8 md:grid-cols-2"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
+        <div className="grid gap-8 md:grid-cols-2">
           {resumeData.projects.slice(0, visibleCount).map((project, index) => (
-            <motion.div key={index} variants={itemVariants} className="h-full">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.6,
+                delay: (index % 4) * 0.1, // Stagger effect based on column position
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="h-full"
+            >
               <TiltCard className="h-full">
                 <div className="h-full group relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] group-hover:border-[var(--border-card-hover)] transition-all duration-500 overflow-hidden flex flex-col backdrop-blur-md shadow-lg">
                   <div className="relative z-10 flex flex-col h-full gap-8">
@@ -174,7 +179,7 @@ export const Projects = () => {
               </TiltCard>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {visibleCount < totalProjects && (
           <div className="flex justify-center pt-8">

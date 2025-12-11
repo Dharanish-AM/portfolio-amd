@@ -80,7 +80,7 @@ export const Skills = () => {
             >
               <TiltCard className="h-full">
                 <div
-                  className={`h-full p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] group-hover:border-[var(--border-card-hover)] transition-all duration-500 relative overflow-hidden backdrop-blur-xl flex flex-col hover:shadow-2xl`}
+                  className={`h-full p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-all duration-500 relative overflow-hidden backdrop-blur-xl flex flex-col hover:shadow-2xl`}
                 >
                   {/* Abstract Tech Grid Background */}
                   <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -88,11 +88,11 @@ export const Skills = () => {
                   <div className="relative z-10 space-y-8">
                     <div className="flex items-center gap-5 border-b border-white/5 pb-6">
                       <div
-                        className={`w-14 h-14 rounded-2xl ${category.bg} flex items-center justify-center ${category.color} shadow-lg ring-1 ring-white/5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
+                        className={`w-14 h-14 rounded-2xl ${category.bg} flex items-center justify-center ${category.color} shadow-lg ring-1 ring-white/5 hover:scale-110 hover:rotate-6 transition-all duration-500`}
                       >
                         <category.icon size={28} strokeWidth={1.5} />
                       </div>
-                      <h3 className="text-2xl font-bold text-[var(--text-primary)] group-hover:text-[var(--text-primary)] transition-colors">
+                      <h3 className="text-2xl font-bold text-[var(--text-primary)] hover:text-[var(--text-primary)] transition-colors">
                         {category.name}
                       </h3>
                     </div>

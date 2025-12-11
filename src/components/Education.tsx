@@ -58,13 +58,13 @@ export const Education = () => {
           {resumeData.education.map((edu, index) => (
             <motion.div key={index} variants={itemVariants} className="h-full">
               <TiltCard className="h-full">
-                <div className="h-full p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] group-hover:border-[var(--border-card-hover)] transition-colors duration-500 relative overflow-hidden backdrop-blur-md flex flex-col shadow-lg">
-                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:rotate-12 group-hover:scale-110 duration-700">
+                <div className="h-full p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-500 relative overflow-hidden backdrop-blur-md flex flex-col shadow-lg">
+                  <div className="absolute top-0 right-0 p-4 opacity-5 hover:opacity-10 transition-opacity transform hover:rotate-12 hover:scale-110 duration-700">
                     <GraduationCap size={120} />
                   </div>
 
                   <div className="relative z-10 flex items-start gap-6">
-                    <div className="w-16 h-16 rounded-2xl bg-[var(--bg-card-hover)] flex items-center justify-center text-violet-400 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shrink-0">
+                    <div className="w-16 h-16 rounded-2xl bg-[var(--bg-card-hover)] flex items-center justify-center text-violet-400 shadow-inner hover:scale-110 hover:rotate-6 transition-all duration-500 shrink-0">
                       <GraduationCap size={32} />
                     </div>
 
