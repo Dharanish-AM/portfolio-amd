@@ -3,7 +3,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { resumeData } from "../data/resume";
 import { TiltCard } from "./TiltCard";
 import { useTheme } from "../context/ThemeContext";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactElement } from "react";
 
 export const Hero = () => {
   const { theme } = useTheme();
@@ -65,7 +65,7 @@ export const Hero = () => {
     };
 
     const lines = code.split('\n');
-    const result: JSX.Element[] = [];
+    const result: ReactElement[] = [];
     
     lines.forEach((line, lineIndex) => {
       const trimmed = line.trim();
