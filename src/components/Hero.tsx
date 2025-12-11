@@ -101,11 +101,15 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="pt-8 flex items-center gap-6 text-[var(--text-secondary)]"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-4 py-2 rounded-full cursor-default hover:bg-green-500/20 transition-colors">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]" />
-              Open to work
+              <span className="text-green-500 font-medium text-sm">
+                Open to work
+              </span>
             </div>
-            <div>Location: {resumeData.personal.location}</div>
+            <div className="text-sm">
+              Location: {resumeData.personal.location}
+            </div>
           </motion.div>
         </div>
 

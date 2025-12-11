@@ -135,53 +135,61 @@ export const Achievements = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-16">
-          {/* Awards Section */}
-          <div className="space-y-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-xl bg-violet-400/10 text-violet-400">
-                <Trophy size={24} />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--text-primary)]">
-                Awards
-              </h3>
-            </div>
+        <div className="flex flex-col gap-12">
+          {/* Awards Section - Wrapped in Card */}
+          <div className="p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-violet-500/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2" />
 
-            <motion.div
-              className="grid gap-5 md:grid-cols-2"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              {resumeData.achievements.map((achievement, index) => (
-                <AchievementCard key={index} achievement={achievement} />
-              ))}
-            </motion.div>
+            <div className="space-y-8 relative z-10">
+              <div className="flex items-center gap-3 mb-6 border-b border-[var(--border-card)] pb-6">
+                <div className="p-2 rounded-xl bg-violet-400/10 text-violet-400">
+                  <Trophy size={24} />
+                </div>
+                <h3 className="text-2xl font-bold text-[var(--text-primary)]">
+                  Awards
+                </h3>
+              </div>
+
+              <motion.div
+                className="grid gap-5 md:grid-cols-2"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {resumeData.achievements.map((achievement, index) => (
+                  <AchievementCard key={index} achievement={achievement} />
+                ))}
+              </motion.div>
+            </div>
           </div>
 
-          {/* Certifications Section */}
-          <div className="space-y-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-xl bg-violet-400/10 text-violet-400">
-                <BadgeCheck size={24} />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--text-primary)]">
-                Certifications
-              </h3>
-            </div>
+          {/* Certifications Section - Wrapped in Card */}
+          <div className="p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] relative overflow-hidden">
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2" />
 
-            <motion.div
-              className="grid gap-5 md:grid-cols-2"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              {resumeData.certifications.map((cert, index) => (
-                <CertificationCard key={index} cert={cert} />
-              ))}
-            </motion.div>
+            <div className="space-y-8 relative z-10">
+              <div className="flex items-center gap-3 mb-6 border-b border-[var(--border-card)] pb-6">
+                <div className="p-2 rounded-xl bg-violet-400/10 text-violet-400">
+                  <BadgeCheck size={24} />
+                </div>
+                <h3 className="text-2xl font-bold text-[var(--text-primary)]">
+                  Certifications
+                </h3>
+              </div>
+
+              <motion.div
+                className="grid gap-5 md:grid-cols-2"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {resumeData.certifications.map((cert, index) => (
+                  <CertificationCard key={index} cert={cert} />
+                ))}
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
