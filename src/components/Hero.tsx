@@ -31,7 +31,7 @@ export const Hero = () => {
                   transition: { staggerChildren: 0.1 },
                 },
               }}
-              className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-gradient"
+              className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-violet-400"
             >
               {resumeData.personal.name.split("").map((char, index) => (
                 <motion.span
@@ -149,38 +149,40 @@ export const Hero = () => {
                   <p className="pl-4">
                     name:{" "}
                     <span className="text-green-400">
-                      "{resumeData.personal.name}"
+                      "{resumeData.hero.name}"
                     </span>
                     ,
                   </p>
                   <p className="pl-4">
                     role:{" "}
-                    <span className="text-blue-400">"Software Developer"</span>,
+                    <span className="text-blue-400">
+                      "{resumeData.hero.role}"
+                    </span>
+                    ,
                   </p>
                   <p className="pl-4 whitespace-normal">
                     mission:{" "}
                     <span className="text-orange-400">
-                      "{resumeData.personal.mission}"
+                      "{resumeData.hero.mission}"
                     </span>
                     ,
                   </p>
                   <p className="pl-4">specialties: [</p>
                   <p className="pl-8 text-yellow-200">
-                    "Application Development", "Cloud & DevOps", "Security", "AI
-                    & Machine Learning"
+                    {resumeData.hero.specialties
+                      .map((s) => `"${s}"`)
+                      .join(", ")}
                   </p>
                   <p className="pl-4">],</p>
                   <p className="pl-4">principles: [</p>
                   <p className="pl-8 text-yellow-200">
-                    {resumeData.personal.principles
-                      .map((p) => `"${p.title}"`)
-                      .join(", ")}
+                    {resumeData.hero.principles.map((p) => `"${p}"`).join(", ")}
                   </p>
                   <p className="pl-4">],</p>
                   <p className="pl-4">
                     status:{" "}
                     <span className="text-purple-400">
-                      "{resumeData.personal.status}"
+                      "{resumeData.hero.status}"
                     </span>
                   </p>
                 </motion.div>

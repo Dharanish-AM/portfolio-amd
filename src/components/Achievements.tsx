@@ -90,19 +90,24 @@ const CertificationCard = ({
 }) => {
   return (
     <motion.div variants={itemVariants} className="h-full">
-      <div className="h-full group relative p-4 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-300 flex flex-col gap-2">
-        <div className="flex justify-between items-start gap-4">
-          <div className="flex-1">
-            <h4 className="font-semibold text-[var(--text-primary)] text-base leading-snug transition-colors">
+      <div className="h-full group relative p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-300 flex flex-col gap-4">
+        <div className="flex items-start gap-4 relative z-10">
+          <div className="p-3 rounded-2xl bg-violet-400/10 text-violet-400 border border-violet-400/10">
+            <BadgeCheck size={24} />
+          </div>
+          <div className="space-y-2 flex-1">
+            <h4 className="font-bold text-[var(--text-primary)] leading-tight text-lg transition-colors">
               {cert.name}
             </h4>
-            <p className="text-sm text-[var(--text-tertiary)] mt-1 font-mono">
-              {cert.provider}
-            </p>
+            <div className="flex flex-col gap-1">
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                {cert.provider}
+              </p>
+              <p className="text-xs text-[var(--text-tertiary)] font-mono">
+                {cert.year}
+              </p>
+            </div>
           </div>
-          <span className="text-xs font-mono font-medium text-violet-300 bg-violet-400/10 px-2 py-0.5 rounded border border-violet-400/10">
-            {cert.year}
-          </span>
         </div>
       </div>
     </motion.div>
@@ -130,9 +135,9 @@ export const Achievements = () => {
           />
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* Awards Column - Takes up more space */}
-          <div className="lg:col-span-3 space-y-8">
+        <div className="flex flex-col gap-16">
+          {/* Awards Section */}
+          <div className="space-y-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-xl bg-violet-400/10 text-violet-400">
                 <Trophy size={24} />
@@ -143,7 +148,7 @@ export const Achievements = () => {
             </div>
 
             <motion.div
-              className="grid gap-5"
+              className="grid gap-5 md:grid-cols-2"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -155,8 +160,8 @@ export const Achievements = () => {
             </motion.div>
           </div>
 
-          {/* Certifications Column - Compact Side Panel */}
-          <div className="lg:col-span-2 space-y-8">
+          {/* Certifications Section */}
+          <div className="space-y-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-xl bg-violet-400/10 text-violet-400">
                 <BadgeCheck size={24} />
@@ -167,7 +172,7 @@ export const Achievements = () => {
             </div>
 
             <motion.div
-              className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1"
+              className="grid gap-5 md:grid-cols-2"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"

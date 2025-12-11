@@ -11,33 +11,33 @@ export const Skills = () => {
       name: "Languages & Frameworks",
       icon: Code2,
       skills: resumeData.skills.languages,
-      color: "text-purple-400",
-      bg: "bg-purple-400/10",
-      border: "border-purple-400/20",
+      color: "text-violet-400",
+      bg: "bg-violet-400/10",
+      border: "border-violet-400/20",
     },
     {
       name: "Cloud & Databases",
       icon: Database,
       skills: resumeData.skills.cloud,
-      color: "text-purple-400",
-      bg: "bg-purple-400/10",
-      border: "border-purple-400/20",
+      color: "text-violet-400",
+      bg: "bg-violet-400/10",
+      border: "border-violet-400/20",
     },
     {
       name: "System Design & DevOps",
       icon: Server,
       skills: resumeData.skills.systemDesign,
-      color: "text-purple-400",
-      bg: "bg-purple-400/10",
-      border: "border-purple-400/20",
+      color: "text-violet-400",
+      bg: "bg-violet-400/10",
+      border: "border-violet-400/20",
     },
     {
       name: "Security & Tools",
       icon: Wrench,
       skills: resumeData.skills.tools,
-      color: "text-purple-400",
-      bg: "bg-purple-400/10",
-      border: "border-purple-400/20",
+      color: "text-violet-400",
+      bg: "bg-violet-400/10",
+      border: "border-violet-400/20",
     },
   ];
 
@@ -46,7 +46,7 @@ export const Skills = () => {
       <div className="flex flex-col gap-12 relative">
         {/* Decorative Background Elements */}
         <div className="absolute top-10 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-10 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-10 left-0 w-96 h-96 bg-violet-500/5 rounded-full blur-3xl -z-10" />
 
         <div className="space-y-4 relative z-10">
           <TextReveal

@@ -45,6 +45,18 @@ export const resumeData = {
     ],
     status: "Code. Scale. Secure. Repeat.",
   },
+  hero: {
+    name: "Dharanish A M",
+    role: "Software Developer",
+    mission: "I create clean, fast, and secure software that scales.",
+    specialties: ["Full-Stack", "Cloud", "Security", "AI"],
+    principles: [
+      "Keep it simple",
+      "Build with purpose",
+      "Trust through design",
+    ],
+    status: "Engineering what's next.",
+  },
   education: [
     {
       degree: "B.E CSE",

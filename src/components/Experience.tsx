@@ -74,7 +74,7 @@ export const Experience = () => {
                           </p>
                         </div>
 
-                        <p className="text-[var(--text-secondary)] leading-relaxed text-base max-w-3xl">
+                        <p className="text-[var(--text-secondary)] leading-relaxed text-base">
                           {exp.description}
                         </p>
                       </div>

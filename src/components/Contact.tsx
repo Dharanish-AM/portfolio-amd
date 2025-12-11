@@ -183,7 +183,7 @@ export const Contact = () => {
                                 ? "bg-green-600 hover:bg-green-500 text-white"
                                 : status === "error"
                                 ? "bg-red-600 hover:bg-red-500 text-white"
-                                : "bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 hover:-translate-y-1 text-white"
+                                : "bg-violet-600 hover:bg-violet-500 hover:-translate-y-1 text-white"
                             }`}
               >
                 {status === "submitting" ? (
