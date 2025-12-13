@@ -312,6 +312,11 @@ export const resumeData = {
       provider: "Udemy",
       year: "2025",
     },
+    {
+      name: "The Complete Full-Stack Web Development Bootcamp",
+      provider: "Udemy",
+      year: "2024",
+    }
   ],
   achievements: [
     {
@@ -334,11 +339,11 @@ export const resumeData = {
       description:
         "Lurnix: An Intelligent Ecosystem for Neurodiverse Learning through AI and Multimodal Content.",
     },
-    {
-      title: "Coding Carnival",
-      description:
-        "Secured 1st Runner-Up among 3200+ participants on Engineers’ Day.",
-    },
+    // {
+    //   title: "Coding Carnival",
+    //   description:
+    //     "Secured 1st Runner-Up among 3200+ participants on Engineers’ Day.",
+    // },
     {
       title: "Open Source",
       description:

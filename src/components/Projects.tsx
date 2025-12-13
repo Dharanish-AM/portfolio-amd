@@ -72,7 +72,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
       className="h-full group/card relative"
     >
       <TiltCard className="h-full">
-        <div className="h-full group relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] group-hover:border-[var(--border-card-hover)] transition-all duration-500 overflow-hidden flex flex-col backdrop-blur-md shadow-lg">
+        <div className="h-full group relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-all duration-500 overflow-hidden flex flex-col backdrop-blur-md shadow-lg">
           <div className="relative z-10 flex flex-col h-full gap-6">
             <div className="flex justify-between items-start">
               {/* Project Icon/Logo Area - Minimal */}
