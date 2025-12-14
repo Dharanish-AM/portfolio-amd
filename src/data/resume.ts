@@ -59,8 +59,9 @@ export const resumeData = {
   },
   education: [
     {
-      degree: "B.E CSE",
+      degree: "Bachelor of Engineering in Computer Science",
       institution: "Sri Eshwar College of Engineering",
+      location: "Coimbatore, India",
       duration: "2023 – 2027",
       score: "CGPA: 8.12 (Till 4th Sem)",
     },

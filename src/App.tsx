@@ -7,6 +7,7 @@ import { Projects } from "./components/Projects";
 import { Skills } from "./components/Skills";
 import { Contact } from "./components/Contact";
 import { Achievements } from "./components/Achievements";
+import { Education } from "./components/Education";
 
 import { ScrollProgress } from "./components/ScrollProgress";
 import { CustomCursor } from "./components/CustomCursor";
@@ -21,6 +22,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Education />
         <Experience />
         <Projects />
         <Achievements />
