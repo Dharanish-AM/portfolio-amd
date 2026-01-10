@@ -163,6 +163,24 @@ export const resumeData = {
       github: "https://github.com/Dharanish-AM/Vulnora-AI",
     },
     {
+      name: "GitPulse",
+      year: "2025",
+      description:
+        "GitPulse is a developer analytics and visualization platform that tracks GitHub activity, analyzes coding patterns, and provides actionable insights through an interactive, cyberpunk-inspired dashboard. It helps developers and teams understand productivity trends, contribution health, and workflow efficiency.",
+      techStack: [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "GitHub API",
+        "Tailwind CSS",
+        "Chart.js",
+        "REST APIs",
+        "OAuth",
+      ],
+      link: "https://github.com/Dharanish-AM/GitPulse",
+      github: "https://github.com/Dharanish-AM/GitPulse",
+    },
+    {
       name: "TownTrolley",
       year: "2024",
       description:
