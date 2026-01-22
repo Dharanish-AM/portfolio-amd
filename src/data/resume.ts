@@ -371,7 +371,7 @@ export const resumeData = {
     {
       title: "GitHub",
       description:
-        "14+ Real-World Projects (8+ Solo Projects) with 1000+ Contributions; LeetCode: 110+ problems.",
+        "15+ Real-World Projects (9+ Solo Projects) with 1100+ Contributions;",
     },
   ],
   skills: {
