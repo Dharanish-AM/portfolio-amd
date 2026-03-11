@@ -8,6 +8,7 @@ import { Skills } from "./components/Skills";
 import { Contact } from "./components/Contact";
 import { Achievements } from "./components/Achievements";
 import { Education } from "./components/Education";
+import { GithubGraph } from "./components/GithubGraph";
 
 import { ScrollProgress } from "./components/ScrollProgress";
 import { CustomCursor } from "./components/CustomCursor";
@@ -26,6 +27,7 @@ function App() {
         <Experience />
         <Projects />
         <Achievements />
+        <GithubGraph />
         <Skills />
         <Contact />
       </main>
