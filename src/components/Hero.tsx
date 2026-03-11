@@ -280,9 +280,21 @@ export const Hero = () => {
 
         {/* Abstract Hero Image/Visual */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          initial={{ opacity: 0, scale: 0.8, y: 0 }}
+          animate={{ 
+            opacity: 1, 
+            scale: 1,
+            y: [0, -10, 0]
+          }}
+          transition={{ 
+            duration: 0.7, 
+            delay: 0.2,
+            y: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
           className="relative perspective-1000"
         >
           <TiltCard className="w-full">

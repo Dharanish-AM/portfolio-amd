@@ -59,11 +59,11 @@ export const resumeData = {
   },
   education: [
     {
-      degree: "Bachelor of Engineering in Computer Science",
+      degree: "Bachelor of Engineering in Computer Science and Engineering",
       institution: "Sri Eshwar College of Engineering",
       location: "Coimbatore, India",
       duration: "2023 – 2027",
-      score: "CGPA: 8.12 (Till 4th Sem)",
+      score: "CGPA: 7.98 (Till 5th Sem)",
     },
     {
       degree: "HSC",
@@ -83,14 +83,18 @@ export const resumeData = {
       company: "RAMPeX Technologies",
       role: "Software Developer Intern",
       duration: "11 Months",
-      description:
-        "Architected and developed scalable, modular full-stack applications with maintainable architecture and cloud deployment. Contributed to an Agile team, handling end-to-end development, CI/CD, code reviews, and testing to deliver production-ready solutions.",
+      description: [
+        "Architected and developed scalable, modular full-stack applications with maintainable architecture and cloud deployment.",
+        "Contributed to an Agile team, handling end-to-end development, CI/CD, code reviews, and testing to deliver production-ready solutions.",
+        "Optimized backend performance and ensured high availability across multi-tenant production systems."
+      ],
     },
   ],
   projects: [
     {
       name: "BioKey",
       year: "2024",
+      isFeatured: true,
       description:
         "BioKey is a cloud-powered biometric media access system integrating a custom fingerprint device with secure authentication. I engineered a cross-platform architecture enabling encrypted, reliable, and low-latency media retrieval with seamless plug‑and‑play usability and scalable cloud deployment.",
       techStack: [
@@ -109,6 +113,7 @@ export const resumeData = {
     {
       name: "AlgoLog",
       year: "2025",
+      isFeatured: true,
       description:
         "AlgoLog is a real-time coding analytics platform that aggregates student performance across multiple platforms using an automated scraping pipeline. It visualizes progress through interactive dashboards and generates insights to help institutions track outcomes at scale.",
       techStack: [
@@ -127,44 +132,46 @@ export const resumeData = {
     {
       name: "Swoosh",
       year: "2025",
+      isFeatured: true,
       description:
         "Swoosh is a secure peer-to-peer file-sharing platform enabling instant QR-based device pairing. It creates isolated, encrypted transfer rooms and uses a hybrid Electron + Spring microservice backend to ensure fast, reliable, and scalable file transfers.",
       techStack: [
         "React",
-        "TailwindCSS",
+        "Tailwind CSS",
         "Redux Toolkit",
         "Electron",
         "Spring Boot",
         "Spring Cloud",
         "Spring Security",
         "MySQL",
+        "Maven",
       ],
       link: "https://github.com/Dharanish-AM/Swoosh",
       github: "https://github.com/Dharanish-AM/Swoosh",
     },
     {
       name: "Vulnora AI",
-      year: "Ongoing",
+      year: "2025",
+      isFeatured: true,
       description:
         "Vulnora AI is an offline, LLM-driven security scanner that detects deep, context-rich vulnerabilities and hardcoded secrets. It validates findings, generates actionable fixes, and supports multi-language analysis through a modular, cross-platform architecture.",
       techStack: [
         "Python",
         "FastAPI",
+        "Ollama (Local LLM)",
         "React",
-        "Node.js",
-        "Tailwind",
-        "Ollama",
-        "Llama 3",
         "Electron",
-        "CLI",
+        "Tailwind CSS",
+        "Vite",
+        "Streamlit",
       ],
-      status: "Ongoing",
       link: "https://github.com/Dharanish-AM/Vulnora-AI",
       github: "https://github.com/Dharanish-AM/Vulnora-AI",
     },
     {
       name: "GitPulse",
       year: "2025",
+      isFeatured: true,
       description:
         "GitPulse is a developer analytics and visualization platform that tracks GitHub activity, analyzes coding patterns, and provides actionable insights through an interactive, cyberpunk-inspired dashboard. It helps developers and teams understand productivity trends, contribution health, and workflow efficiency.",
       techStack: [
@@ -307,8 +314,8 @@ export const resumeData = {
   ],
   certifications: [
     {
-      name: "Certified AppSec Practitioner",
-      provider: "The SecOps Group",
+      name: "AWS Certified Developer - Associate",
+      provider: "Amazon Web Services",
       year: "2025",
     },
     {
@@ -322,20 +329,20 @@ export const resumeData = {
       year: "2025",
     },
     {
+      name: "Certified AppSec Practitioner",
+      provider: "The SecOps Group",
+      year: "2025",
+    },
+    {
       name: "IBM Full-Stack Software Developer Professional Certificate",
       provider: "Coursera",
-      year: "2024",
+      year: "2024 (In Progress)",
     },
     {
       name: "React Native - The Practical Guide",
       provider: "Udemy",
-      year: "2025",
-    },
-    {
-      name: "The Complete Full-Stack Web Development Bootcamp",
-      provider: "Udemy",
       year: "2024",
-    }
+    },
   ],
   achievements: [
     {
@@ -358,20 +365,20 @@ export const resumeData = {
       description:
         "Lurnix: An Intelligent Ecosystem for Neurodiverse Learning through AI and Multimodal Content.",
     },
-    // {
-    //   title: "Coding Carnival",
-    //   description:
-    //     "Secured 1st Runner-Up among 3200+ participants on Engineers’ Day.",
-    // },
+    {
+      title: "Coding Carnival",
+      description:
+        "Secured 1st Runner-Up among 3200+ participants on Engineers’ Day.",
+    },
     {
       title: "Open Source",
       description:
-        "Built RouteLens (VS Code) & Code Tracer CLI (NPM) for enhanced developer productivity.",
+        "Built RouteLens (VS Code), Code Tracer CLI (NPM) & GitPulse (GitHub Marketplace) for developers.",
     },
     {
       title: "GitHub",
       description:
-        "15+ Real-World Projects (9+ Solo Projects) with 1100+ Contributions;",
+        "15+ Real-World Projects (9+ Solo Projects) with 1100+ Contributions.",
     },
   ],
   skills: {
@@ -379,16 +386,21 @@ export const resumeData = {
       "C",
       "C++",
       "Java",
+      "Scala",
       "JavaScript",
       "TypeScript",
+    ],
+    frameworks: [
       "React",
-      "React Native",
       "Next.js",
-      "Node.js",
-      "Express",
-      "Spring Boot",
+      "React Native",
       "Redux",
       "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "NestJS",
+      "Spring Boot",
+      "Play Framework",
     ],
     cloud: [
       "AWS",
@@ -400,10 +412,6 @@ export const resumeData = {
       "Firebase",
       "Nginx",
       "Jenkins",
-      "GitHub Actions",
-      "Vercel",
-      "Netlify",
-      "Render",
       "Terraform basics",
     ],
     systemDesign: [

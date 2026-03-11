@@ -26,11 +26,11 @@ export const CustomCursor = () => {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-[var(--accent-primary)] rounded-full pointer-events-none z-[100] mix-blend-screen hidden md:block"
+        className="fixed top-0 left-0 w-4 h-4 rounded-full pointer-events-none z-[100] hidden md:block mix-blend-difference bg-white"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
-          scale: isPointer ? 1.5 : 1,
+          scale: isPointer ? 2.5 : 1,
         }}
         transition={{
           type: "spring",
@@ -39,20 +39,26 @@ export const CustomCursor = () => {
           mass: 0.5,
         }}
       />
+      
+      {/* Remove the outer ring for a cleaner, modern look when using blend mode */}
+      {/* Text inside cursor when hovering */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-[var(--accent-primary)]/50 rounded-full pointer-events-none z-[100] hidden md:block"
+        className="fixed top-0 left-0 w-4 h-4 rounded-full pointer-events-none z-[100] hidden md:flex items-center justify-center mix-blend-difference"
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isPointer ? 1.5 : 1,
+          x: mousePosition.x - 8,
+          y: mousePosition.y - 8,
+          scale: isPointer ? 2.5 : 0,
+          opacity: isPointer ? 1 : 0,
         }}
         transition={{
           type: "spring",
-          stiffness: 250,
-          damping: 20,
-          mass: 0.8,
+          stiffness: 500,
+          damping: 28,
+          mass: 0.5,
         }}
-      />
+      >
+        <span className="text-[3px] font-bold text-black tracking-widest mt-0.5">VIEW</span>
+      </motion.div>
     </>
   );
 };

@@ -74,12 +74,20 @@ export const Experience = () => {
                           </p>
                         </div>
 
-                        <p className="text-[var(--text-secondary)] leading-relaxed text-base">
-                          {exp.description}
-                        </p>
+                        {Array.isArray(exp.description) ? (
+                          <ul className="list-disc list-outside ml-4 space-y-2 text-[var(--text-secondary)] leading-relaxed text-base">
+                            {exp.description.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-[var(--text-secondary)] leading-relaxed text-base">
+                            {exp.description}
+                          </p>
+                        )}
                       </div>
 
-                      <div className="flex-shrink-0">
+                      <div className="flex-shrink-0 mt-2 md:mt-0">
                         <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-tertiary)] bg-[var(--bg-primary)]/50 px-4 py-2 rounded-full border border-[var(--border-card)] shadow-inner">
                           <Calendar
                             size={16}

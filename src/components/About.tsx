@@ -34,9 +34,31 @@ export const About = () => {
         >
           <div className="relative p-8 md:p-10 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-300 flex flex-col md:flex-row gap-8 group">
             <div className="relative z-10 space-y-4 text-[var(--text-secondary)] leading-relaxed text-base flex-1">
-              {resumeData.personal.about.bio.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.15 },
+                  },
+                }}
+              >
+                {resumeData.personal.about.bio.map((paragraph, index) => (
+                  <motion.p 
+                    key={index}
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    className="mb-4"
+                  >
+                    {paragraph}
+                  </motion.p>
+                ))}
+              </motion.div>
 
               <div className="relative pl-4 py-2 mt-4 border-l-2 border-[var(--accent-primary)]/50">
                 <p className="italic text-[var(--text-primary)] font-medium text-lg">

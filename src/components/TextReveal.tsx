@@ -36,7 +36,7 @@ export const TextReveal = ({
       y: 10,
       transition: {
         duration: 0.4,
-        ease: "easeInOut" as any,
+        ease: "easeInOut" as const,
       },
     },
   };

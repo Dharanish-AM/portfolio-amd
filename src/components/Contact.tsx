@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Mail, Send, Loader2, CheckCircle, XCircle } from "lucide-react";
+import { motion } from "framer-motion";
 import { Section } from "./Section";
 import { resumeData } from "../data/resume";
 
@@ -172,18 +173,20 @@ export const Contact = () => {
                 </div>
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={status === "submitting"}
-                className={`group w-full flex items-center justify-center gap-2 font-bold text-base md:text-lg py-3 md:py-4 px-6 md:px-8 rounded-2xl transition-all shadow-lg active:scale-95 transform 
+                className={`group w-full flex items-center justify-center gap-2 font-bold text-base md:text-lg py-3 md:py-4 px-6 md:px-8 rounded-2xl transition-all shadow-lg transform 
                             ${
                               status === "submitting"
                                 ? "bg-[var(--bg-card)] text-[var(--text-tertiary)] cursor-wait"
                                 : status === "success"
-                                ? "bg-[var(--success)] hover:bg-[var(--success)]/90 text-white"
+                                ? "bg-[var(--success)] text-white"
                                 : status === "error"
-                                ? "bg-[var(--error)] hover:bg-[var(--error)]/90 text-white"
-                                : "bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/90 hover:-translate-y-1 text-white"
+                                ? "bg-[var(--error)] text-white"
+                                : "bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/90 text-white"
                             }`}
               >
                 {status === "submitting" ? (
@@ -210,7 +213,7 @@ export const Contact = () => {
                     />
                   </>
                 )}
-              </button>
+              </motion.button>
 
               {/* Access key hidden input not strictly needed since we use append(), but good practice if plain HTML fallback */}
               <input

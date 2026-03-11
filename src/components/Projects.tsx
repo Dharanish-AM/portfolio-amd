@@ -58,6 +58,7 @@ const getTechIcon = (tech: string) => {
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProjectCard = ({ project, index }: { project: any; index: number }) => {
   return (
     <motion.div
@@ -73,17 +74,38 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
     >
       <TiltCard className="h-full">
         <div className="h-full group relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-all duration-500 overflow-hidden flex flex-col backdrop-blur-md shadow-lg">
+          
+          {/* Optional Project Background Image revealing on hover */}
+          {project.image && (
+             <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
+               <img src={project.image} alt={project.name} className="w-full h-full object-cover" />
+               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-[var(--bg-card)]/80 to-transparent mix-blend-multiply" />
+             </div>
+          )}
+
+          {/* Background glowing gradient on hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+          
           <div className="relative z-10 flex flex-col h-full gap-6">
             <div className="flex justify-between items-start">
               {/* Project Icon/Logo Area - Minimal */}
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-[var(--bg-card-hover)] text-[var(--accent-primary)]">
+                  <div className="p-2 rounded-lg bg-[var(--bg-card-hover)] text-[var(--accent-primary)] shadow-sm">
                     <Folder size={20} />
                   </div>
-                  <h3 className="text-2xl font-bold text-[var(--text-primary)] transition-colors group-hover:translate-x-1 duration-300 flex items-center gap-2">
-                    {project.name}
-                  </h3>
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-2xl font-bold text-[var(--text-primary)] transition-colors group-hover:translate-x-1 duration-300">
+                        {project.name}
+                      </h3>
+                      {project.isFeatured && (
+                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--bg-primary)] bg-[var(--accent-primary)] rounded-full ml-2">
+                          Featured
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
 

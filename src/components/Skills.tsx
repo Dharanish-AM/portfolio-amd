@@ -8,9 +8,17 @@ import { TextReveal } from "./TextReveal";
 export const Skills = () => {
   const categories = [
     {
-      name: "Languages & Frameworks",
+      name: "Languages",
       icon: Code2,
       skills: resumeData.skills.languages,
+      color: "text-[var(--accent-primary)]",
+      bg: "bg-[var(--accent-primary)]/10",
+      border: "border-[var(--accent-primary)]/20",
+    },
+    {
+      name: "Frameworks & Libraries",
+      icon: Code2,
+      skills: resumeData.skills.frameworks || [],
       color: "text-[var(--accent-primary)]",
       bg: "bg-[var(--accent-primary)]/10",
       border: "border-[var(--accent-primary)]/20",
