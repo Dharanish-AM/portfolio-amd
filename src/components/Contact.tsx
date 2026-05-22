@@ -4,8 +4,8 @@ import { Mail, Send, Loader2, CheckCircle, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { Section } from "./Section";
 import { resumeData } from "../data/resume";
-
 import { TiltCard } from "./TiltCard";
+import { TextReveal } from "./TextReveal";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ export const Contact = () => {
 
     try {
       const formPayload = new FormData();
-      formPayload.append("access_key", "4a7c79e4-aa86-4f8c-a54c-4776e8701be5");
+      formPayload.append("access_key", resumeData.personal.web3formsKey);
       formPayload.append("name", formData.name);
       formPayload.append("email", formData.email);
       formPayload.append("message", formData.message);
@@ -56,15 +56,29 @@ export const Contact = () => {
   };
 
   return (
-    <Section id="contact" className="mb-20">
-      <div className="grid md:grid-cols-2 gap-6 md:gap-8 relative z-10">
+    <Section id="contact" className="">
+      <div className="flex flex-col gap-12">
+        <div className="space-y-4">
+          <TextReveal
+            text="Get in Touch"
+            className="text-3xl md:text-4xl font-bold"
+          />
+          <div className="mt-2 text-[var(--text-secondary)] text-lg">
+            Open to opportunities, collaborations, and conversations.
+          </div>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "5rem" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            className="h-1 bg-[var(--accent-primary)] rounded-full"
+          />
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 relative z-10">
         <TiltCard className="h-full">
           <div className="h-full p-6 md:p-10 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] backdrop-blur-md relative overflow-hidden flex flex-col justify-between group hover:border-[var(--border-card-hover)] transition-colors duration-500">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] leading-tight">
-                Get in <br />
-                <span className="text-[var(--accent-primary)]">Touch</span>
-              </h2>
               <p className="text-[var(--text-secondary)] mb-8 md:mb-12 text-base md:text-lg leading-relaxed max-w-md">
                 Have a question or just want to say hi? I'm always open to
                 discussing new opportunities, creative ideas, or just
@@ -215,15 +229,15 @@ export const Contact = () => {
                 )}
               </motion.button>
 
-              {/* Access key hidden input not strictly needed since we use append(), but good practice if plain HTML fallback */}
               <input
                 type="hidden"
                 name="access_key"
-                value="4a7c79e4-aa86-4f8c-a54c-4776e8701be5"
+                value={resumeData.personal.web3formsKey}
               />
             </form>
           </div>
         </TiltCard>
+        </div>
       </div>
     </Section>
   );

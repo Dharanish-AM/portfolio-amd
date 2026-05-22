@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { motion } from "framer-motion";
+import { type ReactNode } from "react";
 
 interface TiltCardProps {
   children: ReactNode;
@@ -9,11 +9,10 @@ interface TiltCardProps {
 export const TiltCard = ({ children, className = "" }: TiltCardProps) => {
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className={`relative will-change-transform ${className}`}
+      whileHover={{ y: -5, scale: 1.01 }}
+      transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+      className={`group/glow relative overflow-hidden rounded-3xl will-change-transform ${className}`}
     >
-
       {children}
     </motion.div>
   );

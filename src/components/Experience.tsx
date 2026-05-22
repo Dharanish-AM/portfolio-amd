@@ -6,8 +6,22 @@ import { TiltCard } from "./TiltCard";
 import { TextReveal } from "./TextReveal";
 
 export const Experience = () => {
+  const renderDescriptionText = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return (
+          <strong key={index} className="text-[var(--text-primary)] font-semibold">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
+
   return (
-    <Section id="experience">
+    <Section id="experience" animate={false} className="">
       <div className="flex flex-col gap-12">
         <div className="space-y-4">
           <TextReveal
@@ -27,7 +41,6 @@ export const Experience = () => {
         </div>
 
         <div className="relative">
-          {/* Animated Timeline Line */}
           <div className="absolute left-4 top-4 bottom-0 w-0.5 bg-[var(--border-card)] md:left-5">
             <motion.div
               className="w-full bg-gradient-to-b from-[var(--accent-primary)] to-blue-500 origin-top"
@@ -42,7 +55,6 @@ export const Experience = () => {
           <div className="space-y-12">
             {resumeData.experience.map((exp, index) => (
               <div key={index} className="relative pl-12 md:pl-20 group">
-                {/* Timeline Dot */}
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -64,7 +76,7 @@ export const Experience = () => {
                     className="relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] group-hover:border-[var(--border-card-hover)] transition-all duration-500 backdrop-blur-md overflow-hidden"
                   >
                     <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                      <div className="space-y-4">
+                      <div className="space-y-4 flex-1">
                         <div>
                           <h3 className="text-2xl font-bold text-[var(--text-primary)] transition-colors">
                             {exp.role}
@@ -77,24 +89,32 @@ export const Experience = () => {
                         {Array.isArray(exp.description) ? (
                           <ul className="list-disc list-outside ml-4 space-y-2 text-[var(--text-secondary)] leading-relaxed text-base">
                             {exp.description.map((item, i) => (
-                              <li key={i}>{item}</li>
+                              <li key={i}>{renderDescriptionText(item)}</li>
                             ))}
                           </ul>
                         ) : (
                           <p className="text-[var(--text-secondary)] leading-relaxed text-base">
-                            {exp.description}
+                            {renderDescriptionText(exp.description)}
                           </p>
                         )}
                       </div>
 
-                      <div className="flex-shrink-0 mt-2 md:mt-0">
-                        <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-tertiary)] bg-[var(--bg-primary)]/50 px-4 py-2 rounded-full border border-[var(--border-card)] shadow-inner">
-                          <Calendar
-                            size={16}
-                            className="text-[var(--accent-primary)]"
-                          />
-                          {exp.duration}
-                        </div>
+                      <div className="flex-shrink-0 mt-2 md:mt-0 flex flex-col items-end gap-2">
+                        {!exp.duration.includes("Ongoing") && (
+                          <div className="flex items-center gap-2 text-sm font-semibold text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 px-4 py-2 rounded-full border border-[var(--accent-primary)]/20 shadow-sm">
+                            <Calendar
+                              size={16}
+                              className="text-[var(--accent-primary)]"
+                            />
+                            {exp.duration}
+                          </div>
+                        )}
+                        {exp.duration.includes("Ongoing") && (
+                          <div className="flex items-center gap-2 text-sm font-semibold text-emerald-400 bg-emerald-500/15 px-4 py-2 rounded-full border border-emerald-500/30">
+                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                            Ongoing
+                          </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>

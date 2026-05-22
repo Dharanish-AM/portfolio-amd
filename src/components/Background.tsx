@@ -7,13 +7,11 @@ export const Background = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Reduced stiffness for smoother, less jittery movement
   const springConfig = { damping: 25, stiffness: 100 };
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    // Throttled mouse move could be better, but direct update is usually fine if the rest is optimized
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
@@ -25,14 +23,12 @@ export const Background = () => {
 
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden bg-[var(--bg-primary)]">
-      {/* Gradient Base - Theme-aware */}
       <div className={`absolute inset-0 ${
         theme === "dark"
-          ? "bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-violet-900/20 via-[#030014] to-[#030014]"
+          ? "bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-violet-900/20 via-[var(--bg-secondary)] to-[var(--bg-secondary)]"
           : "bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-violet-200/30 via-white to-slate-50"
       }`} />
 
-      {/* Abstract Geometric Overlay - Reduced rotation speed and complexity */}
       <div className={`absolute inset-0 overflow-hidden pointer-events-none ${
         theme === "dark" ? "opacity-20" : "opacity-10"
       }`}>
@@ -49,12 +45,6 @@ export const Background = () => {
         </div>
       </div>
 
-      {/* Noise Texture - Static */}
-      <div className={`absolute inset-0 bg-[url('/noise.png')] ${
-        theme === "dark" ? "opacity-[0.03]" : "opacity-[0.02]"
-      } pointer-events-none mix-blend-overlay`} />
-
-      {/* Mouse Follower Glow - Optimized will-change */}
       <motion.div
         style={{
           x: springX,
@@ -62,14 +52,11 @@ export const Background = () => {
           translateX: "-50%",
           translateY: "-50%",
         }}
-        // Reduced blur from 120px to 60px for performance
-        // Added will-change-transform to promote to compositor layer
         className={`absolute w-[600px] h-[600px] ${
           theme === "dark" ? "bg-[var(--accent-primary)]/10" : "bg-[var(--accent-primary)]/5"
         } rounded-full blur-[60px] pointer-events-none mix-blend-screen will-change-transform`}
       />
 
-      {/* Gradient Orbs */}
       <motion.div
         animate={{
           x: [0, 100, 0],
@@ -103,16 +90,13 @@ export const Background = () => {
         } rounded-full blur-[80px] will-change-transform`}
       />
 
-      {/* Removed 2 extra orbs to reduce layer count and composition load */}
-
-      {/* Static deep glow instead of animated */}
       <div className={`absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] ${
         theme === "dark" ? "bg-indigo-900/10" : "bg-indigo-400/5"
       } rounded-full blur-[80px]`} />
 
       <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full ${
         theme === "dark" 
-          ? "bg-gradient-to-b from-transparent via-[#0a0a0a]/50 to-[#0a0a0a]"
+          ? "bg-gradient-to-b from-transparent via-[var(--bg-secondary)]/50 to-[var(--bg-secondary)]"
           : "bg-gradient-to-b from-transparent via-white/30 to-white"
       } pointer-events-none`} />
     </div>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, MapPin } from "lucide-react";
 import { resumeData } from "../data/resume";
 import { TiltCard } from "./TiltCard";
 import { useTheme } from "../context/ThemeContext";
@@ -15,7 +15,6 @@ export const Hero = () => {
     `const profile = {`,
     `  name: "${resumeData.hero.name}",`,
     `  role: "${resumeData.hero.role}",`,
-    `  mission: "${resumeData.hero.mission}",`,
     `  specialties: [`,
     `    ${resumeData.hero.specialties.map((s) => `"${s}"`).join(", ")}`,
     `  ],`,
@@ -30,15 +29,16 @@ export const Hero = () => {
 
   useEffect(() => {
     let currentIndex = 0;
-    const typingSpeed = 10; // milliseconds per character - faster!
-    const startDelay = 600; // initial delay before typing starts
+    const typingSpeed = 25;
+    const startDelay = 600;
 
     const timer = setTimeout(() => {
       const interval = setInterval(() => {
         if (currentIndex <= fullCode.length) {
           setDisplayedCode(fullCode.slice(0, currentIndex));
-          currentIndex++;
+          currentIndex += 3;
         } else {
+          setDisplayedCode(fullCode);
           setIsTypingComplete(true);
           clearInterval(interval);
         }
@@ -172,7 +172,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative pt-32 pb-16 md:pt-40 overflow-hidden"
     >
       {/* Background Gradients removed for global Background component */}
 
@@ -226,59 +226,51 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[var(--text-secondary)] text-lg leading-relaxed max-w-xl"
+            className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed max-w-xl font-light"
           >
-            An architect of the web, blending systems engineering with creative
-            design. I don't just build applications; I craft resilient digital
-            ecosystems that thrive under pressure.
+            {resumeData.hero.mission}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-wrap gap-4"
           >
             <a
               href="#projects"
-              className="group flex items-center justify-center gap-2 px-8 py-3 bg-[var(--text-primary)] text-[var(--bg-primary)] rounded-full font-medium hover:scale-105 transition-transform shadow-lg shadow-white/10"
+              className="group flex items-center justify-center gap-2 px-6 py-3 bg-[var(--accent-primary)] text-[var(--bg-primary)] rounded-full font-semibold hover:scale-105 hover:shadow-lg hover:shadow-[var(--accent-primary)]/20 transition-all"
             >
               View Projects
               <ArrowRight
-                size={20}
+                size={18}
                 className="group-hover:translate-x-1 transition-transform"
               />
             </a>
             <a
-              href="https://docs.google.com/document/d/17laRS8CTAlXNJon7XP5yal49vzY4rIqD/export?format=pdf"
+              href="/23CS041_DHARANISH_AM.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-3 bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] rounded-full font-medium hover:bg-[var(--bg-card-hover)] transition-all hover:scale-105 backdrop-blur-sm"
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] rounded-full font-semibold hover:bg-[var(--bg-card-hover)] transition-all hover:scale-105 backdrop-blur-sm"
             >
-              <Download size={20} />
+              <Download size={18} />
               Download Resume
             </a>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="pt-8 flex items-center gap-6 text-[var(--text-secondary)]"
+            className="pt-6"
           >
-            <div className="flex items-center gap-2 bg-[var(--success)]/10 border border-[var(--success)]/20 px-4 py-2 rounded-full cursor-default hover:bg-[var(--success)]/20 transition-colors">
-              <div className="w-2 h-2 rounded-full bg-[var(--success)] animate-pulse shadow-[0_0_10px_var(--success)]" />
-              <span className="text-[var(--success)] font-medium text-sm">
-                Open to work
-              </span>
-            </div>
-            <div className="text-sm">
-              Location: {resumeData.personal.location}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--accent-primary)]/40 rounded-full text-xs font-semibold text-[var(--text-secondary)] backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 group/loc cursor-default">
+              <MapPin size={14} className="text-[var(--accent-primary)] transition-transform group-hover/loc:scale-110 group-hover/loc:animate-bounce" />
+              <span>Location: {resumeData.personal.location}</span>
             </div>
           </motion.div>
         </div>
 
-        {/* Abstract Hero Image/Visual */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 0 }}
           animate={{ 
@@ -295,7 +287,7 @@ export const Hero = () => {
               ease: "easeInOut"
             }
           }}
-          className="relative perspective-1000"
+          className="relative perspective-1000 gpu-accelerated"
         >
           <TiltCard className="w-full">
             <div className={`relative z-10 w-full rounded-3xl ${

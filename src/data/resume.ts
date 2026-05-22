@@ -4,9 +4,9 @@ export const resumeData = {
   personal: {
     name: "Dharanish A M",
     role: "Software Developer",
-    phone: "+91 8668030261",
     email: "dharanish816@gmail.com",
     location: "Coimbatore, India",
+    web3formsKey: "4a7c79e4-aa86-4f8c-a54c-4776e8701be5",
     social: [
       { name: "GitHub", url: "https://github.com/Dharanish-AM", icon: Github },
       {
@@ -22,33 +22,13 @@ export const resumeData = {
         "I specialize in building system architectures that perform under real-world load—whether it’s distributed backends, cloud-native apps, or intelligent tools powered by AI.",
         "I thrive at the intersection of engineering, problem-solving, and product thinking. Every project I build is driven by clarity, precision, and a relentless commitment to grow beyond yesterday’s limits.",
       ],
-      quote: "Turning ideas into systems. Turning systems into impact.",
-      tagline: "Code. Scale. Secure. Repeat.",
-    },
-    mission:
-      "To engineer high-quality software that blends performance, security, and simplicity—delivering solutions that scale with purpose and stand the test of time.",
-    principles: [
-      {
-        title: "Build with intention",
-        description: "Every line of code should serve clarity, not complexity.",
-      },
-      {
-        title: "Deliver with discipline",
-        description:
-          "Ship thoughtfully, iterate quickly, and own what you create.",
-      },
-      {
-        title: "Architect for trust",
-        description:
-          "Design systems that are secure, reliable, and resilient by default.",
-      },
-    ],
-    status: "Code. Scale. Secure. Repeat.",
+      quote: "Turning ideas into systems. Turning systems into impact."
+    }
   },
   hero: {
     name: "Dharanish A M",
     role: "Software Developer",
-    mission: "I create clean, fast, and secure software that scales.",
+    mission: "Backend & Cloud Engineer focused on high-performance architectures, Artificial Intelligence, and secure distributed systems.",
     specialties: ["Full-Stack", "Cloud", "Security", "AI"],
     principles: [
       "Keep it simple",
@@ -63,7 +43,7 @@ export const resumeData = {
       institution: "Sri Eshwar College of Engineering",
       location: "Coimbatore, India",
       duration: "2023 – 2027",
-      score: "CGPA: 7.98 (Till 5th Sem)",
+      score: "CGPA: 8.02 (Till 5th Sem)",
     },
     {
       degree: "HSC",
@@ -80,6 +60,14 @@ export const resumeData = {
   ],
   experience: [
     {
+      company: "Metropolis Technologies India Pvt Ltd",
+      role: "Software Developer Intern",
+      duration: "Jun 2026 – Ongoing",
+      description: [
+        "Contributing to an AI-driven platform that applies Computer Vision and real-time recognition to make physical infrastructure — including checkout-free parking across 4500+ North American locations — seamlessly intelligent.",
+      ],
+    },
+    {
       company: "RAMPeX Technologies",
       role: "Software Developer Intern",
       duration: "11 Months",
@@ -91,6 +79,45 @@ export const resumeData = {
     },
   ],
   projects: [
+    {
+      name: "Logara AI",
+      year: "2026",
+      isFeatured: true,
+      description:
+        "Logara AI is a modular observability platform designed to transform raw, noisy log streams into actionable intelligence. It combines high-performance FastAPI and Redis queue ingestion with Qdrant vector semantic search, local Ollama LLM root cause synthesis, and an automated backend security-redaction pipeline.",
+      techStack: [
+        "React",
+        "FastAPI",
+        "Python",
+        "Qdrant",
+        "Redis",
+        "Ollama",
+        "Docker",
+        "OpenTelemetry",
+      ],
+      link: "https://github.com/Dharanish-AM/Logara-AI",
+      github: "https://github.com/Dharanish-AM/Logara-AI",
+    },
+    {
+      name: "VulnSight",
+      year: "2026",
+      isFeatured: true,
+      description:
+        "VulnSight is a production-grade, modular vulnerability management platform. It orchestrates industry-standard scanning tools (Nmap, Nuclei, Nikto) via pluggable adapters, normalizes disparate security data, models infrastructure dependencies for lateral threat prediction using NetworkX, and provides a RAG-powered AI interface for real-time security intelligence.",
+      techStack: [
+        "React",
+        "FastAPI",
+        "Python",
+        "ChromaDB",
+        "RAG",
+        "NetworkX",
+        "SSE",
+        "Vite",
+        "Tailwind CSS",
+      ],
+      link: "https://github.com/Dharanish-AM/VulnSight",
+      github: "https://github.com/Dharanish-AM/VulnSight",
+    },
     {
       name: "BioKey",
       year: "2024",
@@ -316,32 +343,38 @@ export const resumeData = {
     {
       name: "AWS Certified Developer - Associate",
       provider: "Amazon Web Services",
-      year: "2025",
+      year: "Issued Feb 2025 • Active",
+      id: "aws"
     },
     {
       name: "ACE Multicloud Network Associate",
       provider: "Aviatrix",
-      year: "2025",
+      year: "Issued Jan 2025 • Active",
+      id: "aviatrix"
     },
     {
       name: "AWS Academy Graduate – Cloud Foundations",
       provider: "Amazon Web Services",
-      year: "2025",
+      year: "Issued Nov 2024",
+      id: "aws"
     },
     {
       name: "Certified AppSec Practitioner",
       provider: "The SecOps Group",
-      year: "2025",
+      year: "Issued Oct 2024",
+      id: "secops"
     },
     {
       name: "IBM Full-Stack Software Developer Professional Certificate",
       provider: "Coursera",
-      year: "2024 (In Progress)",
+      year: "Completed 2024",
+      id: "ibm"
     },
     {
       name: "React Native - The Practical Guide",
       provider: "Udemy",
-      year: "2024",
+      year: "Completed 2024",
+      id: "udemy"
     },
   ],
   achievements: [
@@ -359,11 +392,13 @@ export const resumeData = {
       title: "Patent Publication",
       description:
         "BioKey: A Biometric Authentication-Based Application for Secure Data Access (202541051836A).",
+      link: "https://github.com/Dharanish-AM/BioKey"
     },
     {
       title: "Paper Publication",
       description:
         "Lurnix: An Intelligent Ecosystem for Neurodiverse Learning through AI and Multimodal Content.",
+      link: "https://github.com/Dharanish-AM"
     },
     {
       title: "Coding Carnival",
@@ -374,11 +409,13 @@ export const resumeData = {
       title: "Open Source",
       description:
         "Built RouteLens (VS Code), Code Tracer CLI (NPM) & GitPulse (GitHub Marketplace) for developers.",
+      link: "https://github.com/Dharanish-AM"
     },
     {
       title: "GitHub",
       description:
         "15+ Real-World Projects (9+ Solo Projects) with 1100+ Contributions.",
+      link: "https://github.com/Dharanish-AM"
     },
   ],
   skills: {
@@ -440,5 +477,5 @@ export const resumeData = {
       "Figma",
       "Linux CLI",
     ],
-  },
+  }
 };

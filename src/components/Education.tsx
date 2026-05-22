@@ -30,13 +30,7 @@ export const Education = () => {
         </div>
 
         <TiltCard className="w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] transition-all duration-500 backdrop-blur-md overflow-hidden"
-          >
+          <div className="relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] transition-all duration-500 backdrop-blur-md overflow-hidden">
             <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -55,12 +49,12 @@ export const Education = () => {
 
               <div className="flex-shrink-0">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-tertiary)] bg-[var(--bg-primary)]/50 px-4 py-2 rounded-full border border-[var(--border-card)] shadow-inner">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 px-4 py-2 rounded-full border border-[var(--accent-primary)]/20 shadow-sm">
                     <Calendar size={16} className="text-[var(--accent-primary)]" />
                     {college.duration}
                   </div>
                   {college.location && (
-                    <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-tertiary)] bg-[var(--bg-primary)]/50 px-4 py-2 rounded-full border border-[var(--border-card)] shadow-inner">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 px-4 py-2 rounded-full border border-[var(--accent-primary)]/20 shadow-sm">
                       <MapPin size={16} className="text-[var(--accent-primary)]" />
                       {college.location}
                     </div>
@@ -68,7 +62,7 @@ export const Education = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </TiltCard>
       </div>
     </Section>

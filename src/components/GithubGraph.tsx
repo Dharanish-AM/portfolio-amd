@@ -8,14 +8,14 @@ export const GithubGraph = () => {
   const { theme } = useTheme();
 
   return (
-    <Section id="github" className="mb-20">
+    <Section id="github" className="">
       <div className="flex flex-col gap-12">
         <div className="space-y-4">
           <TextReveal
             text="Contribution Graph"
             className="text-3xl md:text-4xl font-bold"
           />
-          <div className="mt-2 text-[var(--text-secondary)] text-lg">
+          <div className="mt-2 text-[var(--text-secondary)] text-lg font-normal">
             My daily coding activity and open source contributions.
           </div>
           <motion.div
