@@ -15,7 +15,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 
 function App() {
   return (
-    <div className="min-h-screen font-sans selection:bg-violet-500/30">
+    <div className="min-h-screen font-sans selection:bg-violet-500/30 relative z-0">
       <CustomCursor />
       <ScrollProgress />
       <ScrollToTop />

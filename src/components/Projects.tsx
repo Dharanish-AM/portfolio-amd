@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Github,
   Folder,
@@ -165,14 +165,6 @@ const ProjectCard = ({ project, index, isLastOdd }: { project: any; index: numbe
 export const Projects = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const totalProjects = resumeData.projects.length;
-  const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const handleViewMore = () => {
     setVisibleCount((prev) => Math.min(prev + 4, totalProjects));
@@ -180,7 +172,7 @@ export const Projects = () => {
 
   return (
     <Section id="projects" animate={false}>
-      <div ref={containerRef} className="flex flex-col gap-12">
+      <div className="flex flex-col gap-12">
         <div className="space-y-4">
           <TextReveal
             text="Featured Projects"
@@ -198,7 +190,7 @@ export const Projects = () => {
           />
         </div>
 
-        <motion.div style={{ y }} className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {resumeData.projects.slice(0, visibleCount).map((project, index, arr) => (
             <ProjectCard
               key={index}
@@ -207,7 +199,7 @@ export const Projects = () => {
               isLastOdd={arr.length % 2 !== 0 && index === arr.length - 1}
             />
           ))}
-        </motion.div>
+        </div>
 
         {visibleCount < totalProjects && (
           <div className="flex justify-center pt-8">

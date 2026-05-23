@@ -3,12 +3,11 @@ import { ArrowRight, Download, MapPin } from "lucide-react";
 import { resumeData } from "../data/resume";
 import { TiltCard } from "./TiltCard";
 import { useTheme } from "../context/ThemeContext";
-import { useState, useEffect, type ReactElement } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export const Hero = () => {
   const { theme } = useTheme();
-  const [displayedCode, setDisplayedCode] = useState("");
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
 
   // Build the code string
   const codeLines = [
@@ -27,6 +26,9 @@ export const Hero = () => {
 
   const fullCode = codeLines.join("\n");
 
+  const [charIndex, setCharIndex] = useState(0);
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
   useEffect(() => {
     let currentIndex = 0;
     const typingSpeed = 25;
@@ -35,10 +37,10 @@ export const Hero = () => {
     const timer = setTimeout(() => {
       const interval = setInterval(() => {
         if (currentIndex <= fullCode.length) {
-          setDisplayedCode(fullCode.slice(0, currentIndex));
+          setCharIndex(currentIndex);
           currentIndex += 3;
         } else {
-          setDisplayedCode(fullCode);
+          setCharIndex(fullCode.length);
           setIsTypingComplete(true);
           clearInterval(interval);
         }
@@ -50,8 +52,12 @@ export const Hero = () => {
     return () => clearTimeout(timer);
   }, [fullCode]);
 
-  // Function to render code with syntax highlighting with different colors per property
-  const renderSyntaxHighlightedCode = (code: string) => {
+  interface CodeToken {
+    text: string;
+    color?: string;
+  }
+
+  const tokens = useMemo(() => {
     const colors = {
       keyword: theme === "dark" ? "var(--accent-primary)" : "#7c3aed",
       operator: theme === "dark" ? "#64748b" : "#94a3b8",
@@ -61,113 +67,125 @@ export const Hero = () => {
       mission: theme === "dark" ? "#fb923c" : "#ea580c",
       array: theme === "dark" ? "#fef08a" : "#ca8a04",
       status: theme === "dark" ? "var(--accent-primary)" : "#7c3aed",
-      property: theme === "dark" ? "#cbd5e1" : "#334155",
     };
 
-    const lines = code.split('\n');
-    const result: ReactElement[] = [];
-    
+    const lines = fullCode.split('\n');
+    const allTokens: CodeToken[] = [];
+
     lines.forEach((line, lineIndex) => {
       const trimmed = line.trim();
       
-      // Parse each line based on its content
       if (trimmed.startsWith('const')) {
-        // const profile = {
         const parts = line.split(/(\bconst\b|\bprofile\b|=|{)/g).filter(Boolean);
-        parts.forEach((part, i) => {
+        parts.forEach((part) => {
           if (part === 'const') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.keyword }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.keyword });
           } else if (part === '=') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.operator });
           } else if (part === '{') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.bracket }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.bracket });
           } else {
-            result.push(<span key={`${lineIndex}-${i}`}>{part}</span>);
+            allTokens.push({ text: part });
           }
         });
       } else if (trimmed.startsWith('name:')) {
-        // name: "..."
         const match = line.match(/^(\s*)(name)(:)(\s*)(".*?")(,?)$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
-          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
-          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.name }}>{match[5]}</span>);
-          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2] });
+          allTokens.push({ text: match[3], color: colors.operator });
+          allTokens.push({ text: match[4] });
+          allTokens.push({ text: match[5], color: colors.name });
+          allTokens.push({ text: match[6], color: colors.operator });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else if (trimmed.startsWith('role:')) {
         const match = line.match(/^(\s*)(role)(:)(\s*)(".*?")(,?)$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
-          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
-          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.role }}>{match[5]}</span>);
-          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2] });
+          allTokens.push({ text: match[3], color: colors.operator });
+          allTokens.push({ text: match[4] });
+          allTokens.push({ text: match[5], color: colors.role });
+          allTokens.push({ text: match[6], color: colors.operator });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else if (trimmed.startsWith('mission:')) {
         const match = line.match(/^(\s*)(mission)(:)(\s*)(".*?")(,?)$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
-          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
-          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.mission }}>{match[5]}</span>);
-          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2] });
+          allTokens.push({ text: match[3], color: colors.operator });
+          allTokens.push({ text: match[4] });
+          allTokens.push({ text: match[5], color: colors.mission });
+          allTokens.push({ text: match[6], color: colors.operator });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else if (trimmed.startsWith('status:')) {
         const match = line.match(/^(\s*)(status)(:)(\s*)(".*?")$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
-          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
-          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.status }}>{match[5]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2] });
+          allTokens.push({ text: match[3], color: colors.operator });
+          allTokens.push({ text: match[4] });
+          allTokens.push({ text: match[5], color: colors.status });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else if (trimmed.includes('"Full-Stack"') || trimmed.includes('"Keep it simple"')) {
-        // Array content lines
-        result.push(<span key={lineIndex} style={{ color: colors.array }}>{line}</span>);
+        allTokens.push({ text: line, color: colors.array });
       } else if (trimmed.includes('[') || trimmed.includes(']')) {
-        // Array brackets
         const parts = line.split(/(\[|\]|,)/g);
-        parts.forEach((part, i) => {
+        parts.forEach((part) => {
           if (part === '[' || part === ']') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.operator });
           } else if (part === ',') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.operator });
           } else {
-            result.push(<span key={`${lineIndex}-${i}`}>{part}</span>);
+            allTokens.push({ text: part });
           }
         });
       } else if (trimmed === '};') {
         const match = line.match(/^(\s*)(})(;)$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`} style={{ color: colors.bracket }}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2], color: colors.bracket });
+          allTokens.push({ text: match[3], color: colors.operator });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else {
-        result.push(<span key={lineIndex}>{line}</span>);
+        allTokens.push({ text: line });
       }
-      
+
       if (lineIndex < lines.length - 1) {
-        result.push(<span key={`newline-${lineIndex}`}>{'\n'}</span>);
+        allTokens.push({ text: '\n' });
       }
     });
 
-    return <>{result}</>;
-  };
+    return allTokens;
+  }, [fullCode, theme]);
+
+  const typedTokens = useMemo(() => {
+    let count = 0;
+    const result: CodeToken[] = [];
+    for (const token of tokens) {
+      if (count + token.text.length <= charIndex) {
+        result.push(token);
+        count += token.text.length;
+      } else {
+        const remaining = charIndex - count;
+        if (remaining > 0) {
+          result.push({ text: token.text.slice(0, remaining), color: token.color });
+        }
+        break;
+      }
+    }
+    return result;
+  }, [tokens, charIndex]);
   
   return (
     <section
@@ -319,7 +337,11 @@ export const Hero = () => {
                 }}
               >
                 <div className="whitespace-pre-wrap">
-                  {renderSyntaxHighlightedCode(displayedCode)}
+                  {typedTokens.map((token, index) => (
+                    <span key={index} style={token.color ? { color: token.color } : undefined}>
+                      {token.text}
+                    </span>
+                  ))}
                   {!isTypingComplete && (
                     <span 
                       className="inline-block w-[2px] h-[1em] ml-[1px] align-middle"

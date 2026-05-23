@@ -10,7 +10,7 @@ interface SectionProps {
 
 export const Section = ({ children, id, className = "", animate = true }: SectionProps) => {
   return (
-    <section id={id} className={`py-16 md:py-20 scroll-mt-24 px-6 md:px-12 w-full max-w-7xl mx-auto section-contain ${className}`}>
+    <section id={id} className={`py-8 md:py-10 scroll-mt-24 px-6 md:px-12 w-full max-w-7xl mx-auto section-contain ${className}`}>
       {animate ? (
         <motion.div
           initial={{ opacity: 0, y: 30 }}
