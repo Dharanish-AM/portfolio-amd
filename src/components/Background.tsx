@@ -59,7 +59,7 @@ export const Background = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let particles: Particle[] = [];
+    const particles: Particle[] = [];
 
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { Mail, Send, Loader2, CheckCircle, XCircle } from "lucide-react";
+import { Mail, Send, Loader2, CheckCircle, XCircle, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { Section } from "./Section";
 import { resumeData } from "../data/resume";
@@ -78,32 +78,52 @@ export const Contact = () => {
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 relative z-10">
         <TiltCard className="h-full">
           <div className="h-full p-6 md:p-10 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] backdrop-blur-md relative overflow-hidden flex flex-col justify-between group hover:border-[var(--border-card-hover)] transition-colors duration-500">
-            <div>
-              <p className="text-[var(--text-secondary)] mb-8 md:mb-12 text-base md:text-lg leading-relaxed max-w-md">
+            <div className="absolute -top-24 -left-24 w-48 h-48 bg-[var(--accent-primary)]/10 rounded-full blur-3xl group-hover:bg-[var(--accent-primary)]/20 group-hover:scale-150 transition-all duration-700 pointer-events-none" />
+            <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-[var(--accent-primary)]/5 rounded-full blur-3xl group-hover:bg-[var(--accent-primary)]/15 group-hover:scale-150 transition-all duration-700 pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col gap-6 md:gap-8">
+              <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed max-w-md">
                 Have a question or just want to say hi? I'm always open to
                 discussing new opportunities, creative ideas, or just
                 connecting.
               </p>
             </div>
 
-            <div className="flex flex-col gap-6 md:gap-8">
-              <div className="group/item flex items-center gap-4 md:gap-5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-                <div className="p-3 md:p-4 bg-[var(--bg-card-hover)] rounded-2xl text-[var(--accent-primary)] shadow-inner group-hover/item:scale-110 transition-all duration-300">
-                  <Mail size={24} className="md:w-7 md:h-7" />
+            <div className="relative z-10 flex flex-col gap-4 mt-6 md:mt-8">
+              <div className="group/item flex items-center gap-4 md:gap-5 p-4 rounded-2xl bg-[var(--bg-primary)]/20 border border-[var(--border-card)]/30 hover:border-[var(--border-card-hover)] hover:bg-[var(--bg-card-hover)]/30 hover:shadow-xl hover:translate-x-1 transition-all duration-300">
+                <div className="p-3 bg-[var(--bg-card-hover)] rounded-2xl text-[var(--accent-primary)] shadow-inner group-hover/item:scale-110 transition-all duration-300">
+                  <Mail size={22} className="md:w-6 md:h-6" />
                 </div>
                 <div>
-                  <p className="text-sm text-[var(--text-tertiary)] font-medium mb-1">
+                  <p className="text-xs text-[var(--text-tertiary)] font-medium mb-1">
                     Email
                   </p>
                   <a
                     href={`mailto:${resumeData.personal.email}`}
-                    className="text-lg md:text-xl font-medium hover:text-[var(--accent-primary)] transition-colors break-all"
+                    className="text-base md:text-lg font-medium hover:text-[var(--accent-primary)] transition-colors break-all"
                   >
                     {resumeData.personal.email}
                   </a>
                 </div>
               </div>
 
+              <div className="group/item flex items-center gap-4 md:gap-5 p-4 rounded-2xl bg-[var(--bg-primary)]/20 border border-[var(--border-card)]/30 hover:border-[var(--border-card-hover)] hover:bg-[var(--bg-card-hover)]/30 hover:shadow-xl hover:translate-x-1 transition-all duration-300">
+                <div className="p-3 bg-[var(--bg-card-hover)] rounded-2xl text-[var(--accent-primary)] shadow-inner group-hover/item:scale-110 transition-all duration-300">
+                  <MapPin size={22} className="md:w-6 md:h-6" />
+                </div>
+                <div>
+                  <p className="text-xs text-[var(--text-tertiary)] font-medium mb-1">
+                    Location
+                  </p>
+                  <p className="text-base md:text-lg font-medium">
+                    {resumeData.personal.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative z-10 mt-8 md:mt-12 space-y-6 w-full">
+              <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[var(--border-card)] to-transparent opacity-60" />
               <div className="flex gap-3 md:gap-4">
                 {resumeData.personal.social.map((social) => (
                   <a
@@ -129,7 +149,13 @@ export const Contact = () => {
               className="flex flex-col gap-5 md:gap-6 h-full justify-center"
             >
               <div className="space-y-5 md:space-y-6">
-                <div className="relative group">
+                <div className="flex flex-col gap-2 group">
+                  <label
+                    htmlFor="name"
+                    className="text-sm md:text-base font-semibold text-[var(--text-secondary)] transition-colors duration-300 group-focus-within:text-[var(--accent-primary)]"
+                  >
+                    Your Name
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -137,18 +163,18 @@ export const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-5 py-3 md:px-6 md:py-4 rounded-2xl bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] outline-none transition-all placeholder:text-[var(--text-tertiary)] peer"
-                    placeholder=" "
+                    className="w-full px-5 py-3 md:px-6 md:py-4 rounded-2xl bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] outline-none transition-all placeholder:text-[var(--text-tertiary)]"
+                    placeholder="Enter your name"
                   />
-                  <label
-                    htmlFor="name"
-                    className="absolute left-5 top-3 md:left-6 md:top-4 text-[var(--text-tertiary)] text-sm md:text-base duration-300 transform -translate-y-1 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-[var(--accent-primary)]"
-                  >
-                    Your Name
-                  </label>
                 </div>
 
-                <div className="relative group">
+                <div className="flex flex-col gap-2 group">
+                  <label
+                    htmlFor="email"
+                    className="text-sm md:text-base font-semibold text-[var(--text-secondary)] transition-colors duration-300 group-focus-within:text-[var(--accent-primary)]"
+                  >
+                    Your Email
+                  </label>
                   <input
                     type="email"
                     id="email"
@@ -156,18 +182,18 @@ export const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-5 py-3 md:px-6 md:py-4 rounded-2xl bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] outline-none transition-all placeholder:text-[var(--text-tertiary)] peer"
-                    placeholder=" "
+                    className="w-full px-5 py-3 md:px-6 md:py-4 rounded-2xl bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] outline-none transition-all placeholder:text-[var(--text-tertiary)]"
+                    placeholder="Enter your email"
                   />
-                  <label
-                    htmlFor="email"
-                    className="absolute left-5 top-3 md:left-6 md:top-4 text-[var(--text-tertiary)] text-sm md:text-base duration-300 transform -translate-y-1 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-[var(--accent-primary)]"
-                  >
-                    Your Email
-                  </label>
                 </div>
 
-                <div className="relative group">
+                <div className="flex flex-col gap-2 group">
+                  <label
+                    htmlFor="message"
+                    className="text-sm md:text-base font-semibold text-[var(--text-secondary)] transition-colors duration-300 group-focus-within:text-[var(--accent-primary)]"
+                  >
+                    Message
+                  </label>
                   <textarea
                     id="message"
                     name="message"
@@ -175,15 +201,9 @@ export const Contact = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-5 py-3 md:px-6 md:py-4 rounded-2xl bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] outline-none transition-all resize-none placeholder:text-[var(--text-tertiary)] peer"
-                    placeholder=" "
+                    className="w-full px-5 py-3 md:px-6 md:py-4 rounded-2xl bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] outline-none transition-all resize-none placeholder:text-[var(--text-tertiary)]"
+                    placeholder="Enter your message"
                   />
-                  <label
-                    htmlFor="message"
-                    className="absolute left-5 top-3 md:left-6 md:top-4 text-[var(--text-tertiary)] text-sm md:text-base duration-300 transform -translate-y-1 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-[var(--accent-primary)]"
-                  >
-                    Message
-                  </label>
                 </div>
               </div>
 

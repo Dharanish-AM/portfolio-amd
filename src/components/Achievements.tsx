@@ -37,8 +37,9 @@ const itemVariants = {
   },
 };
 
-const getIcon = (text: string) => {
+const renderIcon = (text: string, size = 24) => {
   const lowerText = text.toLowerCase();
+  let IconComponent = Award;
   if (
     lowerText.includes("sih") ||
     lowerText.includes("won") ||
@@ -46,18 +47,20 @@ const getIcon = (text: string) => {
     lowerText.includes("place") ||
     lowerText.includes("runner-up") ||
     lowerText.includes("futurepreneur")
-  )
-    return Trophy;
-  if (
+  ) {
+    IconComponent = Trophy;
+  } else if (
     lowerText.includes("patent") ||
     lowerText.includes("paper") ||
     lowerText.includes("publication")
-  )
-    return FileText;
-  if (lowerText.includes("github") || lowerText.includes("open source"))
-    return Github;
-  if (lowerText.includes("leetcode") || lowerText.includes("code")) return Code;
-  return Award;
+  ) {
+    IconComponent = FileText;
+  } else if (lowerText.includes("github") || lowerText.includes("open source")) {
+    IconComponent = Github;
+  } else if (lowerText.includes("leetcode") || lowerText.includes("code")) {
+    IconComponent = Code;
+  }
+  return <IconComponent size={size} />;
 };
 
 const getCertStyles = (id?: string) => {
@@ -90,19 +93,23 @@ const getCertStyles = (id?: string) => {
   }
 };
 
-const getCertIcon = (id?: string) => {
+const renderCertIcon = (id?: string, size = 24) => {
+  let IconComponent = BadgeCheck;
   switch (id) {
     case "aws":
-      return Cloud;
+      IconComponent = Cloud;
+      break;
     case "aviatrix":
-      return Layers;
+      IconComponent = Layers;
+      break;
     case "secops":
-      return ShieldCheck;
+      IconComponent = ShieldCheck;
+      break;
     case "ibm":
-      return Monitor;
-    default:
-      return BadgeCheck;
+      IconComponent = Monitor;
+      break;
   }
+  return <IconComponent size={size} />;
 };
 
 const AchievementCard = ({
@@ -112,7 +119,6 @@ const AchievementCard = ({
   achievement: { title: string; description: string; link?: string };
   isLastOdd?: boolean;
 }) => {
-  const Icon = getIcon(achievement.title);
   const isPatent = achievement.title.toLowerCase().includes("patent");
   const isPaper = achievement.title.toLowerCase().includes("paper");
 
@@ -121,7 +127,7 @@ const AchievementCard = ({
       <div className="h-full group relative p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] hover:shadow-[0_0_25px_rgba(139,92,246,0.1)] transition-all duration-300 flex flex-col justify-between gap-4">
         <div className="flex items-start gap-4 relative z-10">
           <div className="p-3 rounded-2xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] border border-[var(--accent-primary)]/10">
-            <Icon size={24} />
+            {renderIcon(achievement.title, 24)}
           </div>
           <div className="space-y-2 flex-1">
             <h4 className="font-bold text-[var(--text-primary)] leading-tight text-lg transition-colors">
@@ -157,13 +163,12 @@ const CertificationCard = ({
   isLastOdd?: boolean;
 }) => {
   const styles = getCertStyles(cert.id);
-  const Icon = getCertIcon(cert.id);
   return (
     <motion.div variants={itemVariants} className={`h-full ${isLastOdd ? "md:col-span-2" : ""}`}>
       <div className={`h-full group relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-all duration-300 flex flex-col justify-between gap-6 ${styles.glowClass}`}>
         <div className="flex items-start gap-4 relative z-10">
           <div className={`p-3 rounded-2xl border ${styles.badgeBg} transition-transform duration-300 group-hover:scale-110`}>
-            <Icon size={24} />
+            {renderCertIcon(cert.id, 24)}
           </div>
           <div className="space-y-2 flex-1">
             <h4 className="font-bold text-[var(--text-primary)] leading-tight text-lg transition-colors group-hover:text-[var(--accent-primary)]">

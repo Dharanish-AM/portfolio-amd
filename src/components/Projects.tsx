@@ -58,7 +58,18 @@ const getTechIcon = (tech: string) => {
   }
 };
 
-const ProjectCard = ({ project, index, isLastOdd }: { project: any; index: number; isLastOdd?: boolean }) => {
+interface Project {
+  name: string;
+  year: string;
+  isFeatured?: boolean;
+  description: string;
+  techStack: string[];
+  github?: string;
+  link?: string;
+  image?: string;
+}
+
+const ProjectCard = ({ project, index, isLastOdd }: { project: Project; index: number; isLastOdd?: boolean }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}

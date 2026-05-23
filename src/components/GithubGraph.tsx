@@ -37,7 +37,7 @@ export const GithubGraph = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-violet-500/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2" />
           
-          <div className="w-full overflow-x-auto relative z-10 flex justify-center pb-4">
+          <div className="w-full overflow-x-auto relative z-10 flex md:justify-center justify-start pb-4">
             <div className="min-w-max">
               <GitHubCalendar 
                 username="Dharanish-AM" 
