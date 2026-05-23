@@ -50,7 +50,7 @@ export const Skills = () => {
   ];
 
   return (
-    <Section id="skills">
+    <Section id="skills" animate={false} className="">
       <div className="flex flex-col gap-12 relative">
         {/* Decorative Background Elements */}
         <div className="absolute top-10 right-0 w-96 h-96 bg-[var(--info)]/5 rounded-full blur-3xl -z-10" />
@@ -59,7 +59,7 @@ export const Skills = () => {
         <div className="space-y-4 relative z-10">
           <TextReveal
             text="Technical Skills"
-            className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60"
+            className="text-3xl md:text-4xl font-bold"
           />
           <div className="mt-2 text-[var(--text-secondary)] text-lg">
             Tools and technologies I use to build specific, scalable solutions.
@@ -74,19 +74,22 @@ export const Skills = () => {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 relative z-10">
-          {categories.map((category, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.2,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              <TiltCard className="h-full">
+          {categories.map((category, index) => {
+            const isLastOdd = categories.length % 2 !== 0 && index === categories.length - 1;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.2,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={isLastOdd ? "md:col-span-2" : ""}
+              >
+                <TiltCard className="h-full">
                 <div
                   className={`h-full p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-all duration-500 relative overflow-hidden backdrop-blur-xl flex flex-col hover:shadow-2xl`}
                 >
@@ -138,7 +141,8 @@ export const Skills = () => {
                 </div>
               </TiltCard>
             </motion.div>
-          ))}
+          );
+          })}
         </div>
       </div>
     </Section>

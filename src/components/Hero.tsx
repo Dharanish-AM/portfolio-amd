@@ -1,21 +1,19 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, MapPin } from "lucide-react";
 import { resumeData } from "../data/resume";
 import { TiltCard } from "./TiltCard";
 import { useTheme } from "../context/ThemeContext";
-import { useState, useEffect, type ReactElement } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export const Hero = () => {
   const { theme } = useTheme();
-  const [displayedCode, setDisplayedCode] = useState("");
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
 
   // Build the code string
   const codeLines = [
     `const profile = {`,
     `  name: "${resumeData.hero.name}",`,
     `  role: "${resumeData.hero.role}",`,
-    `  mission: "${resumeData.hero.mission}",`,
     `  specialties: [`,
     `    ${resumeData.hero.specialties.map((s) => `"${s}"`).join(", ")}`,
     `  ],`,
@@ -28,17 +26,21 @@ export const Hero = () => {
 
   const fullCode = codeLines.join("\n");
 
+  const [charIndex, setCharIndex] = useState(0);
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
   useEffect(() => {
     let currentIndex = 0;
-    const typingSpeed = 10; // milliseconds per character - faster!
-    const startDelay = 600; // initial delay before typing starts
+    const typingSpeed = 25;
+    const startDelay = 600;
 
     const timer = setTimeout(() => {
       const interval = setInterval(() => {
         if (currentIndex <= fullCode.length) {
-          setDisplayedCode(fullCode.slice(0, currentIndex));
-          currentIndex++;
+          setCharIndex(currentIndex);
+          currentIndex += 3;
         } else {
+          setCharIndex(fullCode.length);
           setIsTypingComplete(true);
           clearInterval(interval);
         }
@@ -50,8 +52,12 @@ export const Hero = () => {
     return () => clearTimeout(timer);
   }, [fullCode]);
 
-  // Function to render code with syntax highlighting with different colors per property
-  const renderSyntaxHighlightedCode = (code: string) => {
+  interface CodeToken {
+    text: string;
+    color?: string;
+  }
+
+  const tokens = useMemo(() => {
     const colors = {
       keyword: theme === "dark" ? "var(--accent-primary)" : "#7c3aed",
       operator: theme === "dark" ? "#64748b" : "#94a3b8",
@@ -61,118 +67,130 @@ export const Hero = () => {
       mission: theme === "dark" ? "#fb923c" : "#ea580c",
       array: theme === "dark" ? "#fef08a" : "#ca8a04",
       status: theme === "dark" ? "var(--accent-primary)" : "#7c3aed",
-      property: theme === "dark" ? "#cbd5e1" : "#334155",
     };
 
-    const lines = code.split('\n');
-    const result: ReactElement[] = [];
-    
+    const lines = fullCode.split('\n');
+    const allTokens: CodeToken[] = [];
+
     lines.forEach((line, lineIndex) => {
       const trimmed = line.trim();
       
-      // Parse each line based on its content
       if (trimmed.startsWith('const')) {
-        // const profile = {
         const parts = line.split(/(\bconst\b|\bprofile\b|=|{)/g).filter(Boolean);
-        parts.forEach((part, i) => {
+        parts.forEach((part) => {
           if (part === 'const') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.keyword }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.keyword });
           } else if (part === '=') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.operator });
           } else if (part === '{') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.bracket }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.bracket });
           } else {
-            result.push(<span key={`${lineIndex}-${i}`}>{part}</span>);
+            allTokens.push({ text: part });
           }
         });
       } else if (trimmed.startsWith('name:')) {
-        // name: "..."
         const match = line.match(/^(\s*)(name)(:)(\s*)(".*?")(,?)$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
-          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
-          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.name }}>{match[5]}</span>);
-          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2] });
+          allTokens.push({ text: match[3], color: colors.operator });
+          allTokens.push({ text: match[4] });
+          allTokens.push({ text: match[5], color: colors.name });
+          allTokens.push({ text: match[6], color: colors.operator });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else if (trimmed.startsWith('role:')) {
         const match = line.match(/^(\s*)(role)(:)(\s*)(".*?")(,?)$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
-          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
-          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.role }}>{match[5]}</span>);
-          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2] });
+          allTokens.push({ text: match[3], color: colors.operator });
+          allTokens.push({ text: match[4] });
+          allTokens.push({ text: match[5], color: colors.role });
+          allTokens.push({ text: match[6], color: colors.operator });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else if (trimmed.startsWith('mission:')) {
         const match = line.match(/^(\s*)(mission)(:)(\s*)(".*?")(,?)$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
-          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
-          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.mission }}>{match[5]}</span>);
-          result.push(<span key={`${lineIndex}-5`} style={{ color: colors.operator }}>{match[6]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2] });
+          allTokens.push({ text: match[3], color: colors.operator });
+          allTokens.push({ text: match[4] });
+          allTokens.push({ text: match[5], color: colors.mission });
+          allTokens.push({ text: match[6], color: colors.operator });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else if (trimmed.startsWith('status:')) {
         const match = line.match(/^(\s*)(status)(:)(\s*)(".*?")$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
-          result.push(<span key={`${lineIndex}-3`}>{match[4]}</span>);
-          result.push(<span key={`${lineIndex}-4`} style={{ color: colors.status }}>{match[5]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2] });
+          allTokens.push({ text: match[3], color: colors.operator });
+          allTokens.push({ text: match[4] });
+          allTokens.push({ text: match[5], color: colors.status });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else if (trimmed.includes('"Full-Stack"') || trimmed.includes('"Keep it simple"')) {
-        // Array content lines
-        result.push(<span key={lineIndex} style={{ color: colors.array }}>{line}</span>);
+        allTokens.push({ text: line, color: colors.array });
       } else if (trimmed.includes('[') || trimmed.includes(']')) {
-        // Array brackets
         const parts = line.split(/(\[|\]|,)/g);
-        parts.forEach((part, i) => {
+        parts.forEach((part) => {
           if (part === '[' || part === ']') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.operator });
           } else if (part === ',') {
-            result.push(<span key={`${lineIndex}-${i}`} style={{ color: colors.operator }}>{part}</span>);
+            allTokens.push({ text: part, color: colors.operator });
           } else {
-            result.push(<span key={`${lineIndex}-${i}`}>{part}</span>);
+            allTokens.push({ text: part });
           }
         });
       } else if (trimmed === '};') {
         const match = line.match(/^(\s*)(})(;)$/);
         if (match) {
-          result.push(<span key={`${lineIndex}-0`}>{match[1]}</span>);
-          result.push(<span key={`${lineIndex}-1`} style={{ color: colors.bracket }}>{match[2]}</span>);
-          result.push(<span key={`${lineIndex}-2`} style={{ color: colors.operator }}>{match[3]}</span>);
+          allTokens.push({ text: match[1] });
+          allTokens.push({ text: match[2], color: colors.bracket });
+          allTokens.push({ text: match[3], color: colors.operator });
         } else {
-          result.push(<span key={lineIndex}>{line}</span>);
+          allTokens.push({ text: line });
         }
       } else {
-        result.push(<span key={lineIndex}>{line}</span>);
+        allTokens.push({ text: line });
       }
-      
+
       if (lineIndex < lines.length - 1) {
-        result.push(<span key={`newline-${lineIndex}`}>{'\n'}</span>);
+        allTokens.push({ text: '\n' });
       }
     });
 
-    return <>{result}</>;
-  };
+    return allTokens;
+  }, [fullCode, theme]);
+
+  const typedTokens = useMemo(() => {
+    let count = 0;
+    const result: CodeToken[] = [];
+    for (const token of tokens) {
+      if (count + token.text.length <= charIndex) {
+        result.push(token);
+        count += token.text.length;
+      } else {
+        const remaining = charIndex - count;
+        if (remaining > 0) {
+          result.push({ text: token.text.slice(0, remaining), color: token.color });
+        }
+        break;
+      }
+    }
+    return result;
+  }, [tokens, charIndex]);
   
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative pt-32 pb-16 md:pt-40 overflow-hidden"
     >
       {/* Background Gradients removed for global Background component */}
 
@@ -226,59 +244,51 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[var(--text-secondary)] text-lg leading-relaxed max-w-xl"
+            className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed max-w-xl font-light"
           >
-            An architect of the web, blending systems engineering with creative
-            design. I don't just build applications; I craft resilient digital
-            ecosystems that thrive under pressure.
+            {resumeData.hero.mission}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-wrap gap-4"
           >
             <a
               href="#projects"
-              className="group flex items-center justify-center gap-2 px-8 py-3 bg-[var(--text-primary)] text-[var(--bg-primary)] rounded-full font-medium hover:scale-105 transition-transform shadow-lg shadow-white/10"
+              className="group flex items-center justify-center gap-2 px-6 py-3 bg-[var(--accent-primary)] text-[var(--bg-primary)] rounded-full font-semibold hover:scale-105 hover:shadow-lg hover:shadow-[var(--accent-primary)]/20 transition-all"
             >
               View Projects
               <ArrowRight
-                size={20}
+                size={18}
                 className="group-hover:translate-x-1 transition-transform"
               />
             </a>
             <a
-              href="https://docs.google.com/document/d/17laRS8CTAlXNJon7XP5yal49vzY4rIqD/export?format=pdf"
+              href="/23CS041_DHARANISH_AM.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-3 bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] rounded-full font-medium hover:bg-[var(--bg-card-hover)] transition-all hover:scale-105 backdrop-blur-sm"
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] rounded-full font-semibold hover:bg-[var(--bg-card-hover)] transition-all hover:scale-105 backdrop-blur-sm"
             >
-              <Download size={20} />
+              <Download size={18} />
               Download Resume
             </a>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="pt-8 flex items-center gap-6 text-[var(--text-secondary)]"
+            className="pt-6"
           >
-            <div className="flex items-center gap-2 bg-[var(--success)]/10 border border-[var(--success)]/20 px-4 py-2 rounded-full cursor-default hover:bg-[var(--success)]/20 transition-colors">
-              <div className="w-2 h-2 rounded-full bg-[var(--success)] animate-pulse shadow-[0_0_10px_var(--success)]" />
-              <span className="text-[var(--success)] font-medium text-sm">
-                Open to work
-              </span>
-            </div>
-            <div className="text-sm">
-              Location: {resumeData.personal.location}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--accent-primary)]/40 rounded-full text-xs font-semibold text-[var(--text-secondary)] backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 group/loc cursor-default">
+              <MapPin size={14} className="text-[var(--accent-primary)] transition-transform group-hover/loc:scale-110 group-hover/loc:animate-bounce" />
+              <span>Location: {resumeData.personal.location}</span>
             </div>
           </motion.div>
         </div>
 
-        {/* Abstract Hero Image/Visual */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 0 }}
           animate={{ 
@@ -295,7 +305,7 @@ export const Hero = () => {
               ease: "easeInOut"
             }
           }}
-          className="relative perspective-1000"
+          className="relative perspective-1000 gpu-accelerated"
         >
           <TiltCard className="w-full">
             <div className={`relative z-10 w-full rounded-3xl ${
@@ -327,7 +337,11 @@ export const Hero = () => {
                 }}
               >
                 <div className="whitespace-pre-wrap">
-                  {renderSyntaxHighlightedCode(displayedCode)}
+                  {typedTokens.map((token, index) => (
+                    <span key={index} style={token.color ? { color: token.color } : undefined}>
+                      {token.text}
+                    </span>
+                  ))}
                   {!isTypingComplete && (
                     <span 
                       className="inline-block w-[2px] h-[1em] ml-[1px] align-middle"

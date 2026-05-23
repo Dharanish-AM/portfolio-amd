@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Github,
   Folder,
@@ -58,8 +58,18 @@ const getTechIcon = (tech: string) => {
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+interface Project {
+  name: string;
+  year: string;
+  isFeatured?: boolean;
+  description: string;
+  techStack: string[];
+  github?: string;
+  link?: string;
+  image?: string;
+}
+
+const ProjectCard = ({ project, index, isLastOdd }: { project: Project; index: number; isLastOdd?: boolean }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -70,12 +80,11 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
         delay: (index % 2) * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="h-full group/card relative"
+      className={`h-full group/card relative ${isLastOdd ? "md:col-span-2" : ""}`}
     >
       <TiltCard className="h-full">
         <div className="h-full group relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-all duration-500 overflow-hidden flex flex-col backdrop-blur-md shadow-lg">
           
-          {/* Optional Project Background Image revealing on hover */}
           {project.image && (
              <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
                <img src={project.image} alt={project.name} className="w-full h-full object-cover" />
@@ -83,12 +92,10 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
              </div>
           )}
 
-          {/* Background glowing gradient on hover */}
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
           
           <div className="relative z-10 flex flex-col h-full gap-6">
             <div className="flex justify-between items-start">
-              {/* Project Icon/Logo Area - Minimal */}
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 rounded-lg bg-[var(--bg-card-hover)] text-[var(--accent-primary)] shadow-sm">
@@ -108,17 +115,42 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Links */}
-              <div className="flex gap-3">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-mono text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 px-2.5 py-0.5 rounded border border-[var(--accent-primary)]/20 font-semibold">
+                  {project.year}
+                </span>
+              </div>
+              <p className="text-[var(--text-secondary)] leading-relaxed text-sm md:text-base font-normal">
+                {project.description}
+              </p>
+            </div>
+
+            <div className="mt-auto pt-6 border-t border-[var(--border-card)] space-y-4">
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech: string) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 text-xs font-semibold text-[var(--accent-primary)] bg-[var(--accent-primary)]/5 rounded-lg border border-[var(--accent-primary)]/10 flex items-center gap-1.5 hover:bg-[var(--accent-primary)]/20 hover:border-[var(--accent-primary)]/30 transition-colors cursor-default"
+                  >
+                    {getTechIcon(tech)}
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 pt-2">
                 {project.github && (
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-primary)]/50 hover:bg-[var(--accent-primary)]/10 transition-all hover:scale-110 shadow-sm"
+                    className="flex items-center gap-1.5 text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:border-[var(--accent-primary)]/50 transition-all border border-[var(--border-card)] px-3 py-2 rounded-xl bg-[var(--bg-primary)]/40 hover:bg-[var(--accent-primary)]/5 shadow-sm"
                   >
-                    <Github size={18} />
+                    <Github size={14} />
+                    <span>GitHub Repo</span>
                   </a>
                 )}
                 {project.link && (
@@ -126,36 +158,12 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-[var(--bg-primary)]/50 border border-[var(--border-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-primary)]/50 hover:bg-[var(--accent-primary)]/10 transition-all hover:scale-110 shadow-sm"
+                    className="flex items-center gap-1.5 text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:border-[var(--accent-primary)]/50 transition-all border border-[var(--border-card)] px-3 py-2 rounded-xl bg-[var(--bg-primary)]/40 hover:bg-[var(--accent-primary)]/5 shadow-sm ml-auto"
                   >
-                    <ArrowUpRight size={18} />
+                    <ArrowUpRight size={14} />
+                    <span>Live Demo</span>
                   </a>
                 )}
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-mono text-[var(--text-tertiary)] bg-[var(--bg-primary)]/30 px-2 py-0.5 rounded border border-[var(--border-card)]">
-                  {project.year}
-                </span>
-              </div>
-              <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
-                {project.description}
-              </p>
-            </div>
-
-            <div className="mt-auto pt-6 border-t border-[var(--border-card)]">
-              <div className="flex flex-wrap gap-2">
-                {project.techStack.map((tech: string) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 text-xs font-medium text-[var(--accent-primary)] bg-[var(--accent-primary)]/5 rounded-lg border border-[var(--accent-primary)]/10 flex items-center gap-1.5 hover:bg-[var(--accent-primary)]/20 hover:border-[var(--accent-primary)]/30 transition-colors cursor-default"
-                  >
-                    {getTechIcon(tech)}
-                    {tech}
-                  </span>
-                ))}
               </div>
             </div>
           </div>
@@ -168,22 +176,14 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
 export const Projects = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const totalProjects = resumeData.projects.length;
-  const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const handleViewMore = () => {
     setVisibleCount((prev) => Math.min(prev + 4, totalProjects));
   };
 
   return (
-    <Section id="projects">
-      <div ref={containerRef} className="flex flex-col gap-12">
+    <Section id="projects" animate={false}>
+      <div className="flex flex-col gap-12">
         <div className="space-y-4">
           <TextReveal
             text="Featured Projects"
@@ -201,11 +201,16 @@ export const Projects = () => {
           />
         </div>
 
-        <motion.div style={{ y }} className="grid gap-8 md:grid-cols-2">
-          {resumeData.projects.slice(0, visibleCount).map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+        <div className="grid gap-8 md:grid-cols-2">
+          {resumeData.projects.slice(0, visibleCount).map((project, index, arr) => (
+            <ProjectCard
+              key={index}
+              project={project}
+              index={index}
+              isLastOdd={arr.length % 2 !== 0 && index === arr.length - 1}
+            />
           ))}
-        </motion.div>
+        </div>
 
         {visibleCount < totalProjects && (
           <div className="flex justify-center pt-8">

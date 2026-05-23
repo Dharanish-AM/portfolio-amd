@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { resumeData } from "../data/resume";
-import { Terminal } from "lucide-react";
 import { Section } from "./Section";
 import { TextReveal } from "./TextReveal";
 
@@ -25,13 +24,7 @@ export const About = () => {
           />
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="w-full"
-        >
+        <div className="w-full">
           <div className="relative p-8 md:p-10 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] transition-colors duration-300 flex flex-col md:flex-row gap-8 group">
             <div className="relative z-10 space-y-4 text-[var(--text-secondary)] leading-relaxed text-base flex-1">
               <motion.div
@@ -62,17 +55,11 @@ export const About = () => {
 
               <div className="relative pl-4 py-2 mt-4 border-l-2 border-[var(--accent-primary)]/50">
                 <p className="italic text-[var(--text-primary)] font-medium text-lg">
-                  "{resumeData.personal.about.quote}"
+                  {`"${resumeData.personal.about.quote}"`}
                 </p>
-              </div>
-
-              <div className="flex items-center gap-3 pt-4 text-[var(--accent-primary)] font-mono text-sm uppercase tracking-wider">
-                <Terminal size={16} />
-                <span>{resumeData.personal.about.tagline}</span>
               </div>
             </div>
 
-            {/* Profile Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -89,7 +76,7 @@ export const About = () => {
               </div>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </Section>
   );
